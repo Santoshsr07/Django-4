@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dry Fruits - The Ultimate Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transition: all 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.3s ease;
+            mix-blend-mode: difference;
+        }
+
+        /* Animated Background */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #1a0e00, #3d2314, #5c3a1f);
+            z-index: -1;
+        }
+
+        .floating-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(218, 165, 32, 0.15), transparent);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-100px) rotate(180deg); }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #daa520, #ffd700, #d4af37);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 3s ease-in-out infinite;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(218, 165, 32, 0.5)); }
+            50% { filter: drop-shadow(0 0 40px rgba(218, 165, 32, 1)); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(20px); }
+        }
+
+        /* 3D Canvas Section */
+        .canvas-section {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        #dryfruitCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* .canvas-overlay {
+            position: relative;
+            z-index: 2;
+            left: 0;
+            max-width: 400px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            margin-left: 50px;
+        } */
+
+        /* Interactive Cards */
+        .cards-section {
+            padding: 100px 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            border: 1px solid rgba(218, 165, 32, 0.2);
+            cursor: pointer;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(218, 165, 32, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(218, 165, 32, 0.3);
+        }
+
+        .card-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #daa520;
+        }
+
+        .card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .card-price {
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #daa520, #ffd700);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #1a0e00;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 100px 50px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 60px;
+            background: linear-gradient(45deg, #daa520, #ffd700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.1), rgba(212, 175, 55, 0.1));
+            border-radius: 25px;
+            padding: 40px;
+            border: 2px solid rgba(218, 165, 32, 0.3);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .benefit-card:hover::after {
+            opacity: 1;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-15px) rotate(-2deg);
+            box-shadow: 0 25px 50px rgba(218, 165, 32, 0.4);
+            border-color: #daa520;
+        }
+
+        .benefit-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .benefit-title {
+            font-size: 2rem;
+            color: #daa520;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .benefit-desc {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        /* Premium Products */
+        .premium-section {
+            padding: 100px 50px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .premium-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .premium-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            overflow: hidden;
+            border: 2px solid rgba(218, 165, 32, 0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .premium-card:hover {
+            transform: scale(1.05);
+            border-color: #daa520;
+            box-shadow: 0 30px 60px rgba(218, 165, 32, 0.4);
+        }
+
+        .premium-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.3), rgba(212, 175, 55, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+        }
+
+        .premium-content {
+            padding: 30px;
+        }
+
+        .premium-title {
+            font-size: 1.8rem;
+            color: #daa520;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .premium-desc {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .premium-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .premium-price {
+            font-size: 2rem;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .premium-weight {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 5px;
+        }
+
+        .premium-button {
+            background: linear-gradient(45deg, #daa520, #ffd700);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            color: #1a0e00;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .premium-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(218, 165, 32, 0.5);
+        }
+
+        /* Nutrition Info */
+        .nutrition-section {
+            padding: 100px 50px;
+        }
+
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nutrition-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(218, 165, 32, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nutrition-item:hover {
+            background: rgba(218, 165, 32, 0.1);
+            transform: scale(1.05);
+        }
+
+        .nutrition-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .nutrition-label {
+            font-size: 1.2rem;
+            color: #daa520;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .nutrition-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* Interactive Timeline */
+        .timeline-section {
+            padding: 100px 50px;
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #daa520, transparent);
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            width: 45%;
+            border: 1px solid rgba(218, 165, 32, 0.2);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: #daa520;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px #daa520;
+        }
+
+        /* Glass Morphism Section */
+        .glass-section {
+            padding: 100px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .glass-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 60px;
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(218, 165, 32, 0.2);
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .glass-container h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #daa520;
+        }
+
+        .interactive-button {
+            padding: 20px 50px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #daa520, #ffd700);
+            color: #1a0e00;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-weight: 600;
+        }
+
+        .interactive-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .interactive-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .interactive-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(218, 165, 32, 0.5);
+        }
+
+        /* Particles Effect */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #daa520;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: particle-float 15s infinite ease-in-out;
+        }
+
+        @keyframes particle-float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            border-top: 1px solid rgba(218, 165, 32, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 4rem; }
+            .canvas-overlay { 
+                margin-left: 20px; 
+                margin-right: 20px; 
+                max-width: calc(100% - 40px);
+            }
+            .timeline::before { left: 20px; }
+            .timeline-content { width: calc(100% - 60px); margin-left: 60px !important; }
+            body { cursor: auto; }
+            .cursor, .cursor-follower { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursors -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Animated Background -->
+    <div class="background"></div>
+    <div class="floating-shapes" id="floatingShapes"></div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>DRY FRUITS</h1>
+            <p>Nature's premium nutrition</p>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="30" height="50" viewBox="0 0 30 50">
+                <rect x="5" y="5" width="20" height="40" rx="10" fill="none" stroke="#daa520" stroke-width="2"/>
+                <circle cx="15" cy="15" r="3" fill="#daa520">
+                    <animate attributeName="cy" from="15" to="35" dur="1.5s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 3D Canvas Section -->
+    <section class="canvas-section">
+        <canvas id="dryfruitCanvas"></canvas>
+        <!-- <div class="canvas-overlay">
+            <h2 style="color: #daa520; margin-bottom: 20px;">Interactive 3D Showcase</h2>
+            <p>Drag to rotate • Scroll to zoom</p>
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">Experience our premium dry fruits in stunning 3D. Explore the quality and detail of our carefully selected products.</p>
+        </div> -->
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <h2 class="section-title">Health Benefits</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <span class="benefit-icon">💪</span>
+                <div class="benefit-title">Energy Boost</div>
+                <div class="benefit-desc">Natural sugars and complex carbs provide sustained energy throughout the day.</div>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">❤️</span>
+                <div class="benefit-title">Heart Health</div>
+                <div class="benefit-desc">Rich in omega-3 fatty acids and antioxidants that support cardiovascular wellness.</div>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">🧠</span>
+                <div class="benefit-title">Brain Power</div>
+                <div class="benefit-desc">Packed with vitamins and minerals that enhance cognitive function and memory.</div>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">🦴</span>
+                <div class="benefit-title">Bone Strength</div>
+                <div class="benefit-desc">High calcium and magnesium content promotes strong, healthy bones.</div>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">✨</span>
+                <div class="benefit-title">Skin Glow</div>
+                <div class="benefit-desc">Vitamin E and antioxidants nourish skin and promote a healthy complexion.</div>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">🛡️</span>
+                <div class="benefit-title">Immunity</div>
+                <div class="benefit-desc">Loaded with vitamins and minerals that strengthen your immune system.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Products -->
+    <section class="premium-section">
+        <h2 class="section-title">Premium Selection</h2>
+        <div class="premium-grid">
+            <div class="premium-card">
+                <div class="premium-image">🥜</div>
+                <div class="premium-content">
+                    <div class="premium-title">Premium Almonds</div>
+                    <div class="premium-desc">Hand-picked California almonds, rich in vitamin E and protein. Perfect for snacking or cooking.</div>
+                    <div class="premium-footer">
+                        <div>
+                            <div class="premium-price">$24.99</div>
+                            <div class="premium-weight">per 500g</div>
+                        </div>
+                        <button class="premium-button" onclick="celebrateClick()">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="premium-card">
+                <div class="premium-image">🌰</div>
+                <div class="premium-content">
+                    <div class="premium-title">Cashew Nuts</div>
+                    <div class="premium-desc">Creamy whole cashews from premium plantations. Excellent source of healthy fats and minerals.</div>
+                    <div class="premium-footer">
+                        <div>
+                            <div class="premium-price">$29.99</div>
+                            <div class="premium-weight">per 500g</div>
+                        </div>
+                        <button class="premium-button" onclick="celebrateClick()">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="premium-card">
+                <div class="premium-image">🍇</div>
+                <div class="premium-content">
+                    <div class="premium-title">Golden Raisins</div>
+                    <div class="premium-desc">Sun-dried golden raisins bursting with natural sweetness. Rich in iron and fiber.</div>
+                    <div class="premium-footer">
+                        <div>
+                            <div class="premium-price">$14.99</div>
+                            <div class="premium-weight">per 500g</div>
+                        </div>
+                        <button class="premium-button" onclick="celebrateClick()">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Cards -->
+    <section class="cards-section">
+        <h2 class="section-title">Our Collection</h2>
+        <div class="cards-container">
+            <div class="card">
+                <span class="card-badge">⭐ Best Seller</span>
+                <span class="card-icon">🥜</span>
+                <h3>Walnut Halves</h3>
+                <p>Premium walnut halves rich in omega-3 fatty acids. Brain-boosting superfood.</p>
+                <div class="card-price">$32.99 / 500g</div>
+            </div>
+            <div class="card">
+                <span class="card-badge">🔥 Hot Deal</span>
+                <span class="card-icon">🌰</span>
+                <h3>Pistachios</h3>
+                <p>Roasted and salted pistachios. Crunchy, delicious, and packed with nutrients.</p>
+                <div class="card-price">$34.99 / 500g</div>
+            </div>
+            <div class="card">
+                <span class="card-badge">💎 Premium</span>
+                <span class="card-icon">🍯</span>
+                <h3>Dried Apricots</h3>
+                <p>Sweet, chewy apricots loaded with vitamin A and potassium.</p>
+                <div class="card-price">$18.99 / 500g</div>
+            </div>
+            <div class="card">
+                <span class="card-icon">🫐</span>
+                <h3>Dried Cranberries</h3>
+                <p>Tart and sweet cranberries perfect for baking and snacking.</p>
+                <div class="card-price">$16.99 / 500g</div>
+            </div>
+            <div class="card">
+                <span class="card-badge">⭐ Best Seller</span>
+                <span class="card-icon">🌴</span>
+                <h3>Medjool Dates</h3>
+                <p>Large, soft, and sweet dates. Nature's candy with incredible health benefits.</p>
+                <div class="card-price">$22.99 / 500g</div>
+            </div>
+            <div class="card">
+                <span class="card-icon">🥥</span>
+                <h3>Dried Figs</h3>
+                <p>Naturally sweet figs high in fiber and calcium. A delicious healthy treat.</p>
+                <div class="card-price">$19.99 / 500g</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nutrition Info -->
+    <section class="nutrition-section">
+        <h2 class="section-title">Nutritional Excellence</h2>
+        <div class="nutrition-grid">
+            <div class="nutrition-item">
+                <span class="nutrition-icon">🌾</span>
+                <div class="nutrition-label">High Fiber</div>
+                <div class="nutrition-desc">Promotes digestive health</div>
+            </div>
+            <div class="nutrition-item">
+                <span class="nutrition-icon">💪</span>
+                <div class="nutrition-label">Protein Rich</div>
+                <div class="nutrition-desc">Essential for muscle building</div>
+            </div>
+            <div class="nutrition-item">
+                <span class="nutrition-icon">🥑</span>
+                <div class="nutrition-label">Healthy Fats</div>
+                <div class="nutrition-desc">Omega-3 & monounsaturated</div>
+            </div>
+            <div class="nutrition-item">
+                <span class="nutrition-icon">💊</span>
+                <div class="nutrition-label">Vitamins</div>
+                <div class="nutrition-desc">A, B, C, E & K complex</div>
+            </div>
+            <div class="nutrition-item">
+                <span class="nutrition-icon">⚡</span>
+                <div class="nutrition-label">Minerals</div>
+                <div class="nutrition-desc">Iron, calcium, magnesium</div>
+            </div>
+            <div class="nutrition-item">
+                <span class="nutrition-icon">🛡️</span>
+                <div class="nutrition-label">Antioxidants</div>
+                <div class="nutrition-desc">Fight free radicals</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline-section">
+        <h2 class="section-title">From Farm to You</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 style="color: #daa520; margin-bottom: 10px;">Careful Selection</h3>
+                    <p>We source only the finest dry fruits from premium farms around the world.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 style="color: #daa520; margin-bottom: 10px;">Quality Testing</h3>
+                    <p>Every batch undergoes rigorous testing for quality, purity, and freshness.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 style="color: #daa520; margin-bottom: 10px;">Proper Processing</h3>
+                    <p>Advanced drying and processing techniques preserve maximum nutrition.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 style="color: #daa520; margin-bottom: 10px;">Hygienic Packaging</h3>
+                    <p>Sealed in food-grade packaging to maintain freshness and quality.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 style="color: #daa520; margin-bottom: 10px;">Your Health</h3>
+                    <p>Delivered fresh to nourish your body and delight your taste buds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Glass Morphism Section -->
+    <section class="glass-section">
+        <div class="glass-container">
+            <h2>Ready to Nourish?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; line-height: 1.8;">
+                Experience the finest selection of premium dry fruits. From heart-healthy almonds to 
+                energy-boosting dates, we bring you nature's best nutrition in every bite.
+            </p>
+            <button class="interactive-button" onclick="celebrateClick()">Shop Now</button>
+            <button class="interactive-button" onclick="celebrateClick()">View Catalog</button>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-size: 1.1rem;">© 2026 Dry Fruits Premium | Nature's finest nutrition</p>
+        <p style="margin-top: 10px; opacity: 0.7;">Scroll to explore • Click to interact • Taste the quality</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+
+        // Floating Shapes
+        const shapesContainer = document.getElementById('floatingShapes');
+        for (let i = 0; i < 15; i++) {
+            const shape = document.createElement('div');
+            shape.className = 'shape';
+            shape.style.width = Math.random() * 100 + 50 + 'px';
+            shape.style.height = shape.style.width;
+            shape.style.left = Math.random() * 100 + '%';
+            shape.style.top = Math.random() * 100 + '%';
+            shape.style.animationDelay = Math.random() * 5 + 's';
+            shape.style.animationDuration = Math.random() * 10 + 15 + 's';
+            shapesContainer.appendChild(shape);
+        }
+
+        // Particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // 3D Dry Fruit Bowl - Enhanced Version
+        const canvas = document.getElementById('dryfruitCanvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ 
+            canvas: canvas, 
+            antialias: true, 
+            alpha: true,
+            powerPreference: "high-performance"
+        });
+        
+        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setClearColor(0x000000, 0);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+        // Enhanced Lighting System
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+
+        const mainLight = new THREE.DirectionalLight(0xdaa520, 1.5);
+        mainLight.position.set(5, 8, 5);
+        mainLight.castShadow = true;
+        mainLight.shadow.mapSize.width = 2048;
+        mainLight.shadow.mapSize.height = 2048;
+        scene.add(mainLight);
+
+        const rimLight1 = new THREE.PointLight(0xdaa520, 2, 15);
+        rimLight1.position.set(-6, 3, 3);
+        scene.add(rimLight1);
+
+        const rimLight2 = new THREE.PointLight(0xffd700, 1.5, 15);
+        rimLight2.position.set(6, -2, -3);
+        scene.add(rimLight2);
+
+        const backLight = new THREE.PointLight(0xd4af37, 1, 12);
+        backLight.position.set(0, 5, -8);
+        scene.add(backLight);
+
+        const topLight = new THREE.SpotLight(0xffd700, 0.8);
+        topLight.position.set(0, 10, 0);
+        topLight.angle = Math.PI / 6;
+        topLight.penumbra = 0.5;
+        scene.add(topLight);
+
+        // Create bowl and dry fruits group
+        const fruitGroup = new THREE.Group();
+
+        // Wooden bowl
+        const bowlMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0x8b4513,
+            roughness: 0.7,
+            metalness: 0.1,
+            clearcoat: 0.3
+        });
+
+        // Bowl outer
+        const bowlGeometry = new THREE.SphereGeometry(2, 64, 64, 0, Math.PI * 2, 0, Math.PI / 2);
+        const bowl = new THREE.Mesh(bowlGeometry, bowlMaterial);
+        bowl.position.y = 0;
+        bowl.castShadow = true;
+        bowl.receiveShadow = true;
+        fruitGroup.add(bowl);
+
+        // Bowl inner
+        const innerBowlGeometry = new THREE.SphereGeometry(1.9, 64, 64, 0, Math.PI * 2, 0, Math.PI / 2);
+        const innerBowlMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0x6b3410,
+            roughness: 0.8,
+            metalness: 0.05
+        });
+        const innerBowl = new THREE.Mesh(innerBowlGeometry, innerBowlMaterial);
+        innerBowl.position.y = 0.05;
+        innerBowl.receiveShadow = true;
+        fruitGroup.add(innerBowl);
+
+        // Almonds (elongated spheroids)
+        const almondMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0xd2b48c,
+            roughness: 0.6,
+            metalness: 0.1
+        });
+
+        const almondPositions = [
+            { x: 0.3, y: 0.5, z: 0.2, rx: 0.5, ry: 0.3, rz: 0.8 },
+            { x: -0.4, y: 0.6, z: -0.3, rx: 0.2, ry: 0.8, rz: 0.4 },
+            { x: 0.6, y: 0.4, z: -0.5, rx: 0.9, ry: 0.2, rz: 0.6 },
+            { x: -0.5, y: 0.7, z: 0.4, rx: 0.3, ry: 0.6, rz: 0.9 },
+            { x: 0, y: 0.8, z: 0, rx: 0.7, ry: 0.4, rz: 0.2 }
+        ];
+
+        almondPositions.forEach(pos => {
+            const almondGeometry = new THREE.SphereGeometry(0.15, 32, 32);
+            const almond = new THREE.Mesh(almondGeometry, almondMaterial);
+            almond.position.set(pos.x, pos.y, pos.z);
+            almond.scale.set(0.6, 1, 0.7);
+            almond.rotation.set(pos.rx, pos.ry, pos.rz);
+            almond.castShadow = true;
+            fruitGroup.add(almond);
+        });
+
+        // Cashews (curved shape)
+        const cashewMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0xffd7a8,
+            roughness: 0.5,
+            metalness: 0.1
+        });
+
+        for (let i = 0; i < 6; i++) {
+            const cashewGeometry = new THREE.TorusGeometry(0.12, 0.08, 16, 32, Math.PI * 1.2);
+            const cashew = new THREE.Mesh(cashewGeometry, cashewMaterial);
+            const angle = (i / 6) * Math.PI * 2;
+            cashew.position.set(
+                Math.cos(angle) * 0.8,
+                0.5 + Math.random() * 0.3,
+                Math.sin(angle) * 0.8
+            );
+            cashew.rotation.set(
+                Math.random() * Math.PI,
+                Math.random() * Math.PI,
+                Math.random() * Math.PI
+            );
+            cashew.castShadow = true;
+            fruitGroup.add(cashew);
+        }
+
+        // Raisins (small spheres)
+        const raisinMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0x3d2817,
+            roughness: 0.8,
+            metalness: 0.05,
+            emissive: 0x1a0f08,
+            emissiveIntensity: 0.2
+        });
+
+        for (let i = 0; i < 20; i++) {
+            const raisinGeometry = new THREE.SphereGeometry(0.06, 16, 16);
+            const raisin = new THREE.Mesh(raisinGeometry, raisinMaterial);
+            const angle = Math.random() * Math.PI * 2;
+            const radius = Math.random() * 1.2;
+            raisin.position.set(
+                Math.cos(angle) * radius,
+                0.2 + Math.random() * 0.5,
+                Math.sin(angle) * radius
+            );
+            raisin.scale.set(1, 0.8, 1);
+            raisin.castShadow = true;
+            fruitGroup.add(raisin);
+        }
+
+        // Dates (elongated dark ovals)
+        const dateMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0x4a2511,
+            roughness: 0.7,
+            metalness: 0.1
+        });
+
+        for (let i = 0; i < 4; i++) {
+            const dateGeometry = new THREE.SphereGeometry(0.2, 32, 32);
+            const date = new THREE.Mesh(dateGeometry, dateMaterial);
+            const angle = (i / 4) * Math.PI * 2;
+            date.position.set(
+                Math.cos(angle) * 0.6,
+                0.6 + Math.random() * 0.2,
+                Math.sin(angle) * 0.6
+            );
+            date.scale.set(0.7, 1.3, 0.8);
+            date.rotation.set(
+                Math.random() * 0.5,
+                Math.random() * Math.PI * 2,
+                Math.random() * 0.5
+            );
+            date.castShadow = true;
+            fruitGroup.add(date);
+        }
+
+        // Walnuts (textured spheres)
+        const walnutMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0x8b7355,
+            roughness: 0.9,
+            metalness: 0.05
+        });
+
+        for (let i = 0; i < 3; i++) {
+            const walnutGeometry = new THREE.SphereGeometry(0.18, 32, 32);
+            const walnut = new THREE.Mesh(walnutGeometry, walnutMaterial);
+            const angle = (i / 3) * Math.PI * 2 + 1;
+            walnut.position.set(
+                Math.cos(angle) * 1,
+                0.4,
+                Math.sin(angle) * 1
+            );
+            walnut.castShadow = true;
+            fruitGroup.add(walnut);
+        }
+
+        // Pistachios (small green nuts)
+        const pistachioMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0x9db88f,
+            roughness: 0.6,
+            metalness: 0.1
+        });
+
+        for (let i = 0; i < 15; i++) {
+            const pistachioGeometry = new THREE.SphereGeometry(0.08, 16, 16);
+            const pistachio = new THREE.Mesh(pistachioGeometry, pistachioMaterial);
+            const angle = Math.random() * Math.PI * 2;
+            const radius = 0.3 + Math.random() * 0.9;
+            pistachio.position.set(
+                Math.cos(angle) * radius,
+                0.3 + Math.random() * 0.4,
+                Math.sin(angle) * radius
+            );
+            pistachio.scale.set(1, 0.7, 0.9);
+            pistachio.castShadow = true;
+            fruitGroup.add(pistachio);
+        }
+
+        // Enhanced sparkles with multiple layers
+        const sparklesGroup = new THREE.Group();
+        
+        // Inner sparkles
+        const innerSparklesGeometry = new THREE.BufferGeometry();
+        const innerPositions = [];
+        for (let i = 0; i < 400; i++) {
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.random() * Math.PI;
+            const radius = 3 + Math.random() * 1;
+            innerPositions.push(
+                radius * Math.sin(phi) * Math.cos(theta),
+                radius * Math.sin(phi) * Math.sin(theta),
+                radius * Math.cos(phi)
+            );
+        }
+        innerSparklesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(innerPositions, 3));
+        const innerSparklesMaterial = new THREE.PointsMaterial({
+            color: 0xdaa520,
+            size: 0.08,
+            transparent: true,
+            opacity: 0.8,
+            blending: THREE.AdditiveBlending
+        });
+        const innerSparkles = new THREE.Points(innerSparklesGeometry, innerSparklesMaterial);
+        sparklesGroup.add(innerSparkles);
+
+        // Outer sparkles
+        const outerSparklesGeometry = new THREE.BufferGeometry();
+        const outerPositions = [];
+        for (let i = 0; i < 200; i++) {
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.random() * Math.PI;
+            const radius = 5 + Math.random() * 2;
+            outerPositions.push(
+                radius * Math.sin(phi) * Math.cos(theta),
+                radius * Math.sin(phi) * Math.sin(theta),
+                radius * Math.cos(phi)
+            );
+        }
+        outerSparklesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(outerPositions, 3));
+        const outerSparklesMaterial = new THREE.PointsMaterial({
+            color: 0xffd700,
+            size: 0.12,
+            transparent: true,
+            opacity: 0.6,
+            blending: THREE.AdditiveBlending
+        });
+        const outerSparkles = new THREE.Points(outerSparklesGeometry, outerSparklesMaterial);
+        sparklesGroup.add(outerSparkles);
+
+        fruitGroup.add(sparklesGroup);
+
+        // Rotating glow rings
+        const glowRing1Geometry = new THREE.TorusGeometry(3.5, 0.03, 16, 100);
+        const glowRing1Material = new THREE.MeshBasicMaterial({
+            color: 0xdaa520,
+            transparent: true,
+            opacity: 0.5,
+            blending: THREE.AdditiveBlending
+        });
+        const glowRing1 = new THREE.Mesh(glowRing1Geometry, glowRing1Material);
+        glowRing1.position.y = 0.5;
+        glowRing1.rotation.x = Math.PI / 2;
+        fruitGroup.add(glowRing1);
+
+        const glowRing2Geometry = new THREE.TorusGeometry(4, 0.02, 16, 100);
+        const glowRing2Material = new THREE.MeshBasicMaterial({
+            color: 0xffd700,
+            transparent: true,
+            opacity: 0.4,
+            blending: THREE.AdditiveBlending
+        });
+        const glowRing2 = new THREE.Mesh(glowRing2Geometry, glowRing2Material);
+        glowRing2.position.y = 0.5;
+        glowRing2.rotation.x = Math.PI / 2;
+        fruitGroup.add(glowRing2);
+
+        scene.add(fruitGroup);
+        camera.position.set(3, 3, 8);
+        camera.lookAt(0, 0.5, 0);
+
+        // Mouse interaction
+        let isDragging = false;
+        let previousMousePosition = { x: 0, y: 0 };
+        let rotation = { x: 0, y: 0 };
+        let targetRotation = { x: 0, y: 0 };
+
+        canvas.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            previousMousePosition = { x: e.clientX, y: e.clientY };
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const deltaX = e.clientX - previousMousePosition.x;
+                const deltaY = e.clientY - previousMousePosition.y;
+                
+                targetRotation.y += deltaX * 0.01;
+                targetRotation.x += deltaY * 0.01;
+                
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            }
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        canvas.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            camera.position.z += e.deltaY * 0.01;
+            camera.position.z = Math.max(5, Math.min(15, camera.position.z));
+        });
+
+        // Animation loop with enhanced effects
+        let time = 0;
+        function animate() {
+            requestAnimationFrame(animate);
+            time += 0.01;
+            
+            if (!isDragging) {
+                targetRotation.y += 0.003;
+            }
+            
+            rotation.x += (targetRotation.x - rotation.x) * 0.1;
+            rotation.y += (targetRotation.y - rotation.y) * 0.1;
+            
+            fruitGroup.rotation.x = rotation.x;
+            fruitGroup.rotation.y = rotation.y;
+            
+            // Sparkles rotation at different speeds
+            innerSparkles.rotation.y += 0.002;
+            innerSparkles.rotation.x += 0.001;
+            outerSparkles.rotation.y -= 0.0015;
+            outerSparkles.rotation.z += 0.001;
+            
+            // Pulsing glow rings
+            glowRing1.rotation.z += 0.012;
+            glowRing2.rotation.z -= 0.008;
+            glowRing1.scale.set(
+                1 + Math.sin(time * 2) * 0.05,
+                1 + Math.sin(time * 2) * 0.05,
+                1
+            );
+            glowRing2.scale.set(
+                1 + Math.cos(time * 1.5) * 0.05,
+                1 + Math.cos(time * 1.5) * 0.05,
+                1
+            );
+            glowRing1Material.opacity = 0.4 + Math.sin(time * 3) * 0.2;
+            glowRing2Material.opacity = 0.3 + Math.cos(time * 2.5) * 0.15;
+            
+            // Pulsing lights
+            rimLight1.intensity = 1.5 + Math.sin(time * 2) * 0.5;
+            rimLight2.intensity = 1 + Math.cos(time * 1.5) * 0.3;
+            backLight.intensity = 0.8 + Math.sin(time * 3) * 0.4;
+            
+            // Sparkle size pulsing
+            innerSparklesMaterial.size = 0.08 + Math.sin(time * 3) * 0.02;
+            outerSparklesMaterial.size = 0.12 + Math.cos(time * 2) * 0.03;
+            
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Button celebration
+        function celebrateClick() {
+            const button = event.target;
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.left = event.clientX + 'px';
+                particle.style.top = event.clientY + 'px';
+                particle.style.width = '6px';
+                particle.style.height = '6px';
+                particle.style.background = '#daa520';
+                particle.style.borderRadius = '50%';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '10000';
+                document.body.appendChild(particle);
+
+                const angle = (Math.PI * 2 * i) / 30;
+                const velocity = 5 + Math.random() * 5;
+                let x = 0, y = 0;
+                let opacity = 1;
+
+                const animateParticle = () => {
+                    x += Math.cos(angle) * velocity;
+                    y += Math.sin(angle) * velocity + 2;
+                    opacity -= 0.02;
+
+                    particle.style.transform = `translate(${x}px, ${y}px)`;
+                    particle.style.opacity = opacity;
+
+                    if (opacity > 0) {
+                        requestAnimationFrame(animateParticle);
+                    } else {
+                        particle.remove();
+                    }
+                };
+
+                animateParticle();
+            }
+        }
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            const width = canvas.clientWidth;
+            const height = canvas.clientHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        });
+
+        // Card hover effect
+        document.querySelectorAll('.card, .benefit-card, .premium-card, .interactive-button, .premium-button, .nutrition-item').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.style.width = '60px';
+                cursor.style.height = '60px';
+                cursor.style.backgroundColor = 'rgba(218, 165, 32, 0.2)';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursor.style.backgroundColor = 'transparent';
+            });
+        });
+    </script>
+</body>
+</html>

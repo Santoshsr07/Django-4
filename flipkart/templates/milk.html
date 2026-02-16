@@ -1,291 +1,952 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pure Milk - Fresh & Healthy</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins', sans-serif;
-    scroll-behavior:smooth;
-}
-
-body{
-    background: linear-gradient(135deg,#e6f7ff,#ffffff);
-    color:#333;
-    overflow-x:hidden;
-}
-
-/* NAVBAR */
-nav{
-    position:fixed;
-    width:100%;
-    top:0;
-    left:0;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 10%;
-    background:rgba(255,255,255,0.9);
-    backdrop-filter:blur(10px);
-    transition:0.3s;
-    z-index:1000;
-}
-
-nav.scrolled{
-    box-shadow:0 4px 15px rgba(0,0,0,0.1);
-    padding:15px 10%;
-}
-
-nav h2{
-    color:#0077b6;
-    font-weight:700;
-}
-
-nav ul{
-    list-style:none;
-    display:flex;
-    gap:25px;
-}
-
-/* HERO */
-.hero{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:140px 10% 80px 10%;
-    min-height:100vh;
-}
-
-.hero-text{
-    max-width:500px;
-    animation:slideInLeft 1s ease forwards;
-}
-
-.hero-text h1{
-    font-size:45px;
-    color:#0077b6;
-}
-
-.hero-text p{
-    margin:20px 0;
-    font-size:18px;
-    line-height:1.6;
-}
-
-/* Button Ripple */
-.hero-text button{
-    padding:12px 30px;
-    border:none;
-    background:#0077b6;
-    color:white;
-    font-size:16px;
-    border-radius:30px;
-    cursor:pointer;
-    position:relative;
-    overflow:hidden;
-    transition:0.3s;
-}
-
-.hero-text button:hover{
-    background:#023e8a;
-    transform:scale(1.05);
-}
-
-.hero-text button::after{
-    content:"";
-    position:absolute;
-    width:20px;
-    height:20px;
-    background:rgba(255,255,255,0.4);
-    border-radius:50%;
-    transform:scale(0);
-    animation:ripple 0.6s linear;
-    opacity:0;
-}
-
-.hero img{
-    width:400px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    animation:float 4s ease-in-out infinite;
-}
-
-/* SECTIONS */
-.section{
-    padding:80px 10%;
-    text-align:center;
-    opacity:0;
-    transform:translateY(50px);
-    transition:1s;
-}
-
-.section.show{
-    opacity:1;
-    transform:translateY(0);
-}
-
-.section h2{
-    font-size:35px;
-    margin-bottom:40px;
-    color:#0077b6;
-}
-
-/* CARDS */
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-}
-
-.card{
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.05);
-    transition:0.4s;
-}
-
-.card:hover{
-    transform:translateY(-15px) scale(1.05);
-    box-shadow:0 20px 40px rgba(0,119,182,0.2);
-}
-
-/* GALLERY */
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-
-.gallery img{
-    width:100%;
-    border-radius:15px;
-    transition:0.4s;
-}
-
-.gallery img:hover{
-    transform:scale(1.1);
-    box-shadow:0 20px 40px rgba(0,119,182,0.3);
-}
-
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:30px;
-    background:#0077b6;
-    color:white;
-    margin-top:50px;
-}
-
-/* ANIMATIONS */
-@keyframes slideInLeft{
-    from{opacity:0; transform:translateX(-100px);}
-    to{opacity:1; transform:translateX(0);}
-}
-
-@keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-20px);}
-}
-
-@keyframes ripple{
-    to{
-        transform:scale(10);
-        opacity:0;
-    }
-}
-
-@media(max-width:768px){
-    .hero{
-        flex-direction:column;
-        text-align:center;
-    }
-    .hero img{
-        margin-top:30px;
-        width:90%;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<nav id="navbar">
-    <h2>🥛 PureMilk</h2>
-    <ul>
-        <li>Home</li>
-        <li>Benefits</li>
-        <li>Gallery</li>
-    </ul>
-</nav>
-
-<section class="hero">
-    <div class="hero-text">
-        <h1>Fresh & Organic Milk</h1>
-        <p>Milk is rich in calcium, protein and essential vitamins that support strong bones and a healthy lifestyle.</p>
-        <button>Explore More</button>
-    </div>
-    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b" alt="Milk">
-</section>
-
-<section class="section">
-    <h2>Why Milk is Important?</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>💪 Strong Bones</h3>
-            <p>Calcium and Vitamin D help build strong bones.</p>
-        </div>
-        <div class="card">
-            <h3>🧠 Brain Health</h3>
-            <p>Protein and B12 support brain development.</p>
-        </div>
-        <div class="card">
-            <h3>❤️ Heart Health</h3>
-            <p>Potassium maintains healthy blood pressure.</p>
-        </div>
-    </div>
-</section>
-
-<section class="section">
-    <h2>Fresh Dairy Gallery</h2>
-    <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1563630423918-b58f07336ac9">
-        <img src="https://images.unsplash.com/photo-1585238342028-78d387f4a707">
-        <img src="https://images.unsplash.com/photo-1571687949920-0ab3a6f31a33">
-        <img src="https://images.unsplash.com/photo-1590080875515-8f3b1e0f47d3">
-    </div>
-</section>
-
-<footer>
-    © 2026 PureMilk | Animated Demo Website
-</footer>
-
-<script>
-/* Navbar scroll effect */
-window.addEventListener("scroll",function(){
-    const nav = document.getElementById("navbar");
-    nav.classList.toggle("scrolled", window.scrollY > 50);
-});
-
-/* Fade-in sections on scroll */
-const sections = document.querySelectorAll(".section");
-
-window.addEventListener("scroll",()=>{
-    sections.forEach(section=>{
-        const sectionTop = section.getBoundingClientRect().top;
-        if(sectionTop < window.innerHeight - 100){
-            section.classList.add("show");
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milk - The Ultimate Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    });
-});
-</script>
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transition: all 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.3s ease;
+            mix-blend-mode: difference;
+        }
+
+        /* Animated Background */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+            z-index: -1;
+        }
+
+        .floating-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-100px) rotate(180deg); }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #fff, #a8dadc, #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 3s ease-in-out infinite;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(168, 218, 220, 0.5)); }
+            50% { filter: drop-shadow(0 0 40px rgba(168, 218, 220, 1)); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(20px); }
+        }
+
+        /* 3D Canvas Section */
+        .canvas-section {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        #milkCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* .canvas-overlay {
+            position: relative;
+            z-index: 2;
+            left: 0;
+            max-width: 400px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-left: 50px;
+        } */
+
+        /* Interactive Cards */
+        .cards-section {
+            padding: 100px 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(168, 218, 220, 0.3);
+        }
+
+        .card-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #a8dadc;
+        }
+
+        .card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Nutrition Counter */
+        .nutrition-section {
+            padding: 100px 50px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .nutrition-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 60px;
+            background: linear-gradient(45deg, #a8dadc, #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nutrition-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nutrition-item:hover {
+            background: rgba(168, 218, 220, 0.1);
+            transform: scale(1.05);
+        }
+
+        .nutrition-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #a8dadc;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .nutrition-label {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Interactive Timeline */
+        .timeline-section {
+            padding: 100px 50px;
+            position: relative;
+        }
+
+        .timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #a8dadc, transparent);
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            width: 45%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: #a8dadc;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px #a8dadc;
+        }
+
+        /* Glass Morphism Section */
+        .glass-section {
+            padding: 100px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .glass-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .glass-container h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #a8dadc;
+        }
+
+        .interactive-button {
+            padding: 20px 50px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #a8dadc, #457b9d);
+            color: #fff;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .interactive-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .interactive-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(168, 218, 220, 0.5);
+        }
+
+        /* Particles Effect */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #a8dadc;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: particle-float 15s infinite ease-in-out;
+        }
+
+        @keyframes particle-float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 4rem; }
+            .canvas-overlay { 
+                margin-left: 20px; 
+                margin-right: 20px; 
+                max-width: calc(100% - 40px);
+            }
+            .timeline::before { left: 20px; }
+            .timeline-content { width: calc(100% - 60px); margin-left: 60px !important; }
+            body { cursor: auto; }
+            .cursor, .cursor-follower { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursors -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Animated Background -->
+    <div class="background"></div>
+    <div class="floating-shapes" id="floatingShapes"></div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>MILK</h1>
+            <p>Experience the future of nutrition</p>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="30" height="50" viewBox="0 0 30 50">
+                <rect x="5" y="5" width="20" height="40" rx="10" fill="none" stroke="#fff" stroke-width="2"/>
+                <circle cx="15" cy="15" r="3" fill="#fff">
+                    <animate attributeName="cy" from="15" to="35" dur="1.5s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 3D Canvas Section -->
+    <section class="canvas-section">
+        <canvas id="milkCanvas"></canvas>
+        <!-- <div class="canvas-overlay">
+            <h2 style="color: #a8dadc; margin-bottom: 20px;">Interactive 3D Model</h2>
+            <p>Drag to rotate • Scroll to zoom</p>
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">Experience milk in a whole new dimension. Our 3D visualization brings the product to life with realistic rendering and smooth interactions.</p>
+        </div> -->
+    </section>
+
+    <!-- Cards Section -->
+    <section class="cards-section">
+        <h2 class="nutrition-title">Why Milk Matters</h2>
+        <div class="cards-container">
+            <div class="card">
+                <span class="card-icon">💪</span>
+                <h3>Bone Strength</h3>
+                <p>Packed with calcium and vitamin D, milk is essential for building and maintaining strong bones throughout your lifetime.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🧠</span>
+                <h3>Brain Power</h3>
+                <p>Rich in B vitamins and protein that support cognitive function and mental clarity.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🏃</span>
+                <h3>Energy Fuel</h3>
+                <p>Natural sugars and proteins provide sustained energy for your active lifestyle.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">❤️</span>
+                <h3>Heart Health</h3>
+                <p>Contains potassium which helps regulate blood pressure and supports cardiovascular health.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🌟</span>
+                <h3>Skin Glow</h3>
+                <p>Vitamins A and D promote healthy, radiant skin from the inside out.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🦷</span>
+                <h3>Dental Care</h3>
+                <p>Calcium and phosphorus work together to protect tooth enamel and prevent decay.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nutrition Counter -->
+    <section class="nutrition-section">
+        <h2 class="nutrition-title">Nutritional Powerhouse</h2>
+        <p style="text-align: center; margin-bottom: 50px; font-size: 1.2rem;">Per 1 cup (240ml) of whole milk</p>
+        <div class="nutrition-grid">
+            <div class="nutrition-item">
+                <span class="nutrition-number" data-target="149">0</span>
+                <span class="nutrition-label">Calories</span>
+            </div>
+            <div class="nutrition-item">
+                <span class="nutrition-number" data-target="8">0</span>
+                <span class="nutrition-label">Protein (g)</span>
+            </div>
+            <div class="nutrition-item">
+                <span class="nutrition-number" data-target="276">0</span>
+                <span class="nutrition-label">Calcium (mg)</span>
+            </div>
+            <div class="nutrition-item">
+                <span class="nutrition-number" data-target="12">0</span>
+                <span class="nutrition-label">Carbs (g)</span>
+            </div>
+            <div class="nutrition-item">
+                <span class="nutrition-number" data-target="322">0</span>
+                <span class="nutrition-label">Potassium (mg)</span>
+            </div>
+            <div class="nutrition-item">
+                <span class="nutrition-number" data-target="8">0</span>
+                <span class="nutrition-label">Fat (g)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline-section">
+        <h2 class="nutrition-title">The Journey of Milk</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 style="color: #a8dadc; margin-bottom: 10px;">Farm Fresh</h3>
+                    <p>Milk begins its journey on family farms where cows are cared for with the highest standards.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 style="color: #a8dadc; margin-bottom: 10px;">Quality Testing</h3>
+                    <p>Every batch undergoes rigorous testing to ensure purity, quality, and nutritional value.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 style="color: #a8dadc; margin-bottom: 10px;">Pasteurization</h3>
+                    <p>Milk is carefully heated to eliminate harmful bacteria while preserving nutrients.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 style="color: #a8dadc; margin-bottom: 10px;">Packaging</h3>
+                    <p>Sealed in protective containers to maintain freshness and quality.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 style="color: #a8dadc; margin-bottom: 10px;">Your Table</h3>
+                    <p>Delivered fresh to stores and your home, ready to nourish and delight.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Glass Morphism Section -->
+    <section class="glass-section">
+        <div class="glass-container">
+            <h2>Ready to Experience?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; line-height: 1.8;">
+                Join millions who have made milk a part of their daily wellness routine. 
+                Every glass is a step toward better health.
+            </p>
+            <button class="interactive-button" onclick="celebrateClick()">Learn More</button>
+            <button class="interactive-button" onclick="celebrateClick()">Get Started</button>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-size: 1.1rem;">© 2026 Milk Experience | Crafted with passion for nutrition</p>
+        <p style="margin-top: 10px; opacity: 0.7;">Scroll to explore • Click to interact • Experience the difference</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+
+        // Floating Shapes
+        const shapesContainer = document.getElementById('floatingShapes');
+        for (let i = 0; i < 15; i++) {
+            const shape = document.createElement('div');
+            shape.className = 'shape';
+            shape.style.width = Math.random() * 100 + 50 + 'px';
+            shape.style.height = shape.style.width;
+            shape.style.left = Math.random() * 100 + '%';
+            shape.style.top = Math.random() * 100 + '%';
+            shape.style.animationDelay = Math.random() * 5 + 's';
+            shape.style.animationDuration = Math.random() * 10 + 15 + 's';
+            shapesContainer.appendChild(shape);
+        }
+
+        // Particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // 3D Milk Bottle
+        const canvas = document.getElementById('milkCanvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+        
+        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+        renderer.setClearColor(0x000000, 0);
+
+        // Enhanced Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xa8dadc, 1);
+        directionalLight.position.set(5, 5, 5);
+        scene.add(directionalLight);
+
+        const pointLight1 = new THREE.PointLight(0xa8dadc, 1);
+        pointLight1.position.set(-5, 5, 5);
+        scene.add(pointLight1);
+
+        const pointLight2 = new THREE.PointLight(0x457b9d, 0.5);
+        pointLight2.position.set(5, -5, -5);
+        scene.add(pointLight2);
+
+        // Create advanced milk bottle
+        const bottleGroup = new THREE.Group();
+
+        // Bottle body with glass effect
+        const bodyGeometry = new THREE.CylinderGeometry(1, 1.2, 4, 32);
+        const bodyMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0xffffff,
+            transparent: true,
+            opacity: 0.3,
+            roughness: 0.1,
+            metalness: 0.1,
+            clearcoat: 1.0,
+            clearcoatRoughness: 0.1
+        });
+        const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+        bottleGroup.add(body);
+
+        // Bottle neck
+        const neckGeometry = new THREE.CylinderGeometry(0.5, 1, 1, 32);
+        const neck = new THREE.Mesh(neckGeometry, bodyMaterial);
+        neck.position.y = 2.5;
+        bottleGroup.add(neck);
+
+        // Bottle cap with metallic finish
+        const capGeometry = new THREE.CylinderGeometry(0.6, 0.6, 0.4, 32);
+        const capMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0xa8dadc,
+            roughness: 0.2,
+            metalness: 0.8
+        });
+        const cap = new THREE.Mesh(capGeometry, capMaterial);
+        cap.position.y = 3.2;
+        bottleGroup.add(cap);
+
+        // Milk inside with realistic look
+        const milkGeometry = new THREE.CylinderGeometry(0.9, 1.1, 3.5, 32);
+        const milkMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0xfff8dc,
+            roughness: 0.5,
+            metalness: 0.1
+        });
+        const milk = new THREE.Mesh(milkGeometry, milkMaterial);
+        milk.position.y = -0.2;
+        bottleGroup.add(milk);
+
+        // Glowing label
+        const labelGeometry = new THREE.CylinderGeometry(1.05, 1.15, 1.5, 32, 1, true);
+        const labelMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0xa8dadc,
+            transparent: true,
+            opacity: 0.6,
+            emissive: 0xa8dadc,
+            emissiveIntensity: 0.5
+        });
+        const label = new THREE.Mesh(labelGeometry, labelMaterial);
+        label.position.y = 0;
+        bottleGroup.add(label);
+
+        // Add sparkles around bottle
+        const sparklesGeometry = new THREE.BufferGeometry();
+        const sparklesPositions = [];
+        for (let i = 0; i < 200; i++) {
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.random() * Math.PI;
+            const radius = 3 + Math.random() * 2;
+            sparklesPositions.push(
+                radius * Math.sin(phi) * Math.cos(theta),
+                radius * Math.sin(phi) * Math.sin(theta),
+                radius * Math.cos(phi)
+            );
+        }
+        sparklesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(sparklesPositions, 3));
+        const sparklesMaterial = new THREE.PointsMaterial({
+            color: 0xa8dadc,
+            size: 0.05,
+            transparent: true,
+            opacity: 0.8
+        });
+        const sparkles = new THREE.Points(sparklesGeometry, sparklesMaterial);
+        bottleGroup.add(sparkles);
+
+        scene.add(bottleGroup);
+        camera.position.z = 8;
+
+        // Mouse interaction
+        let isDragging = false;
+        let previousMousePosition = { x: 0, y: 0 };
+        let rotation = { x: 0, y: 0 };
+        let targetRotation = { x: 0, y: 0 };
+
+        canvas.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            previousMousePosition = { x: e.clientX, y: e.clientY };
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const deltaX = e.clientX - previousMousePosition.x;
+                const deltaY = e.clientY - previousMousePosition.y;
+                
+                targetRotation.y += deltaX * 0.01;
+                targetRotation.x += deltaY * 0.01;
+                
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            }
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        canvas.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            camera.position.z += e.deltaY * 0.01;
+            camera.position.z = Math.max(5, Math.min(15, camera.position.z));
+        });
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            if (!isDragging) {
+                targetRotation.y += 0.005;
+            }
+            
+            // Smooth rotation
+            rotation.x += (targetRotation.x - rotation.x) * 0.1;
+            rotation.y += (targetRotation.y - rotation.y) * 0.1;
+            
+            bottleGroup.rotation.x = rotation.x;
+            bottleGroup.rotation.y = rotation.y;
+            
+            // Animate sparkles
+            sparkles.rotation.y += 0.001;
+            
+            // Pulsing label
+            labelMaterial.emissiveIntensity = 0.3 + Math.sin(Date.now() * 0.001) * 0.2;
+            
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.nutrition-number');
+        let hasAnimated = false;
+
+        const nutritionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    hasAnimated = true;
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        const duration = 2000;
+                        const increment = target / (duration / 16);
+                        let current = 0;
+
+                        const updateCounter = () => {
+                            current += increment;
+                            if (current < target) {
+                                counter.textContent = Math.floor(current);
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target;
+                            }
+                        };
+
+                        updateCounter();
+                    });
+                }
+            });
+        }, observerOptions);
+
+        nutritionObserver.observe(document.querySelector('.nutrition-section'));
+
+        // Button celebration
+        function celebrateClick() {
+            const button = event.target;
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.left = event.clientX + 'px';
+                particle.style.top = event.clientY + 'px';
+                particle.style.width = '6px';
+                particle.style.height = '6px';
+                particle.style.background = '#a8dadc';
+                particle.style.borderRadius = '50%';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '10000';
+                document.body.appendChild(particle);
+
+                const angle = (Math.PI * 2 * i) / 30;
+                const velocity = 5 + Math.random() * 5;
+                let x = 0, y = 0;
+                let opacity = 1;
+
+                const animateParticle = () => {
+                    x += Math.cos(angle) * velocity;
+                    y += Math.sin(angle) * velocity + 2;
+                    opacity -= 0.02;
+
+                    particle.style.transform = `translate(${x}px, ${y}px)`;
+                    particle.style.opacity = opacity;
+
+                    if (opacity > 0) {
+                        requestAnimationFrame(animateParticle);
+                    } else {
+                        particle.remove();
+                    }
+                };
+
+                animateParticle();
+            }
+        }
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            const width = canvas.clientWidth;
+            const height = canvas.clientHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        });
+
+        // Card hover effect - change cursor
+        document.querySelectorAll('.card, .interactive-button').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.style.width = '60px';
+                cursor.style.height = '60px';
+                cursor.style.backgroundColor = 'rgba(168, 218, 220, 0.2)';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursor.style.backgroundColor = 'transparent';
+            });
+        });
+    </script>
 </body>
 </html>

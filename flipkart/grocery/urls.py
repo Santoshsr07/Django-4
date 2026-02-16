@@ -3,9 +3,10 @@ from grocery import views
 
 urlpatterns = [
     path('', views.milk),
-    path('grocery/', views.dryfruit),
-    path('Cars/', views.cars),
+    path('milk/', views.milk),
+    path('toys/', views.toys),
     path('bevrages/', views.bevrages),
+    path('dryfruits',views.dryfruit),
     
 
 ]

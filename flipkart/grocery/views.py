@@ -6,10 +6,10 @@ def milk(request):
     return render(request, 'milk.html')
 
 def dryfruit(request):
-    return render(request, 'dryfruit.html')
+    return render(request, 'dryfruits.html')
 
-def cars(request):
-    return render(request, 'cars.html')
+def toys(request):
+    return render(request, 'toys.html')
 
 def bevrages(request):
     return render(request, 'bevrages.html')
