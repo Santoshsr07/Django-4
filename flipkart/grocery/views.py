@@ -5,6 +5,12 @@ from django.shortcuts import render
 def home(request):
     return render(request, 'home.html')
 
+def shop(request):
+    return render(request, 'shop.html')
+
+def offers(request):
+    return render(request, 'offers.html')
+
 def milk(request):
     return render(request, 'milk.html')
 
@@ -17,3 +23,5 @@ def toys(request):
 def bevrages(request):
     return render(request, 'bevrages.html')
 
+def categories(request):
+    return render(request, 'categories.html')

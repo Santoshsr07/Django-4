@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Shop | GroceryMart{% endblock %}
+
+{% block content %}
+
+<div class="floating-cart">
+    🛒 <span id="cart-count">0</span>
+</div>
+
+<section class="shop-section">
+    <h1 class="shop-title">⚡ Grocery Drop Zone</h1>
+
+    <input type="text" id="searchInput" placeholder="Search your cravings..." class="search-bar">
+
+    <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="fruit">Fruits</button>
+        <button class="filter-btn" data-filter="veg">Veggies</button>
+        <button class="filter-btn" data-filter="dairy">Dairy</button>
+        <button class="filter-btn" data-filter="drink">Drinks</button>
+    </div>
+
+    <div class="product-grid">
+
+        <!-- FRUITS -->
+        <div class="product-card" data-category="fruit">
+            <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce">
+            <h3>Fresh Apples</h3>
+            <p class="price">₹120</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="fruit">
+            <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6">
+            <h3>Strawberries</h3>
+            <p class="price">₹180</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+
+        <!-- VEGGIES -->
+        <div class="product-card" data-category="veg">
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999">
+            <h3>Fresh Broccoli</h3>
+            <p class="price">₹80</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="veg">
+            <img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2">
+            <h3>Tomatoes Pack</h3>
+            <p class="price">₹60</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+
+        <!-- DAIRY -->
+        <div class="product-card" data-category="dairy">
+            <img src="https://images.unsplash.com/photo-1585238342024-78d387f4a707">
+            <h3>Milk Pack</h3>
+            <p class="price">₹55</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="dairy">
+            <img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f">
+            <h3>Cheese Block</h3>
+            <p class="price">₹150</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+
+        <!-- DRINKS -->
+        <div class="product-card" data-category="drink">
+            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87">
+            <h3>Cold Drink</h3>
+            <p class="price">₹45</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="drink">
+            <img src="https://images.unsplash.com/photo-1497534446932-c925b458314e">
+            <h3>Orange Juice</h3>
+            <p class="price">₹95</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+
+    </div>
+</section>
+
+<div id="toast" class="toast">Added to cart 🚀</div>
+
+{% endblock %}

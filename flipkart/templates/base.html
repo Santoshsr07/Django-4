@@ -23,9 +23,9 @@
         <div class="logo">🛒 GroceryMart</div>
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
-            <li><a href="#">Shop</a></li>
-            <li><a href="#">Categories</a></li>
-            <li><a href="#">Offers</a></li>
+            <li><a href="{% url 'shop' %}">Shop</a></li>
+            <li><a href="{% url 'categories' %}">Categories</a></li>
+            <a href="{% url 'offers' %}">Offers</a>
             <li><a href="#">Contact</a></li>
         </ul>
         <div class="nav-btn">
@@ -88,6 +88,58 @@
             });
 
         });
+        document.addEventListener("DOMContentLoaded", function () {
+
+            let cartCount = 0;
+            const cartDisplay = document.getElementById("cart-count");
+            const buttons = document.querySelectorAll(".cart-btn");
+            const toast = document.getElementById("toast");
+
+            buttons.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    cartCount++;
+                    cartDisplay.textContent = cartCount;
+
+                    toast.classList.add("show");
+                    setTimeout(() => toast.classList.remove("show"), 1500);
+                });
+            });
+
+            /* FILTER */
+            const filterBtns = document.querySelectorAll(".filter-btn");
+            const products = document.querySelectorAll(".product-card");
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    document.querySelector(".active").classList.remove("active");
+                    btn.classList.add("active");
+
+                    const filter = btn.dataset.filter;
+
+                    products.forEach(product => {
+                        if (filter === "all" || product.dataset.category === filter) {
+                            product.style.display = "block";
+                        } else {
+                            product.style.display = "none";
+                        }
+                    });
+                });
+            });
+
+            /* SEARCH */
+            const searchInput = document.getElementById("searchInput");
+
+            searchInput.addEventListener("keyup", () => {
+                const value = searchInput.value.toLowerCase();
+
+                products.forEach(product => {
+                    const name = product.querySelector("h3").textContent.toLowerCase();
+                    product.style.display = name.includes(value) ? "block" : "none";
+                });
+            });
+
+        });
+
     </script>
 
 </body>
