@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}Home | GroceryMart{% endblock %}
+
+{% block content %}
+
+<div class="cursor-glow"></div>
+
+<!-- HERO -->
+<section class="hero-modern">
+
+    <div class="hero-content">
+        <h1>
+            GroceryMart ⚡ <br>
+            <span>Fast. Fresh. Fearless.</span>
+        </h1>
+
+        <p>
+            Groceries delivered before your motivation runs out.
+            Premium quality. Insane speed.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="{% url 'shop' %}" class="primary-btn">Shop Now</a>
+            <a href="{% url 'offers' %}" class="secondary-btn">View Offers</a>
+        </div>
+    </div>
+
+</section>
+
+<!-- FEATURE STRIP -->
+<section class="feature-strip">
+    <div class="feature">⚡ 10-Min Delivery</div>
+    <div class="feature">🔥 Daily Flash Deals</div>
+    <div class="feature">💳 Secure Checkout</div>
+    <div class="feature">🌱 Fresh Products</div>
+</section>
+
+<!-- CATEGORY GRID -->
+<section class="home-categories">
+
+    <h2>Explore Categories</h2>
+
+    <div class="home-category-grid">
+
+        <a href="{% url 'shop' %}" class="home-card">
+            <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?q=80&w=800&auto=format&fit=crop">
+            <div class="overlay">Shop Fruits</div>
+        </a>
+
+        <a href="{% url 'categories' %}" class="home-card">
+            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=800&auto=format&fit=crop">
+            <div class="overlay">Browse Categories</div>
+        </a>
+
+        <a href="{% url 'offers' %}" class="home-card">
+            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=800&auto=format&fit=crop">
+            <div class="overlay">Hot Deals</div>
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}
