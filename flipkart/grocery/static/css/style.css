@@ -370,3 +370,174 @@ body {
     transform: translateY(-10px) scale(1.03);
     box-shadow: 0 0 40px rgba(255, 0, 200, 0.5);
 }
+
+/* ================= OFFERS PAGE ================= */
+
+.offers-hero {
+    padding: 120px 80px 60px;
+    text-align: center;
+}
+
+.offers-hero h1 {
+    font-size: 60px;
+    font-weight: 800;
+    background: linear-gradient(90deg, #ff0000, #ff9900);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.offers-hero p {
+    margin-top: 10px;
+    opacity: 0.7;
+}
+
+#countdown {
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ff4444;
+    animation: glowPulse 1.5s infinite alternate;
+}
+
+@keyframes glowPulse {
+    from {
+        text-shadow: 0 0 5px #ff0000;
+    }
+
+    to {
+        text-shadow: 0 0 25px #ff6600;
+    }
+}
+
+/* GRID */
+
+.offers-grid {
+    padding: 40px 80px 120px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+/* CARD */
+
+.offer-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 25px;
+    text-align: center;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.offer-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.4);
+}
+
+.offer-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+/* BADGE */
+
+.badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: red;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* STOCK */
+
+.stock {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ff4444;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    animation: stockPulse 1.5s infinite;
+}
+
+@keyframes stockPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* PRICES */
+
+.old-price {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.new-price {
+    font-size: 22px;
+    color: #00ffcc;
+    margin-bottom: 15px;
+}
+
+/* BUTTON */
+
+.deal-btn {
+    padding: 10px 25px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(45deg, #ff0000, #ff9900);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    color: white;
+}
+
+.deal-btn:hover {
+    box-shadow: 0 0 25px #ff0000;
+    transform: scale(1.05);
+}
+
+.stock-bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.stock-fill {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #ff0000, #ff9900);
+    transition: width 0.3s ease;
+}
+.wishlist {
+    position: absolute;
+    top: 55px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.wishlist.active {
+    color: red;
+    transform: scale(1.2);
+}

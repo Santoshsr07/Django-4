@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Offers | GroceryMart{% endblock %}
+
+{% block content %}
+
+<section class="offers-hero">
+    <h1>🔥 FLASH SALE 🔥</h1>
+    <p>Deals disappearing faster than your motivation</p>
+    <div id="countdown">01 : 00 : 00</div>
+</section>
+
+<section class="offers-grid">
+
+    <div class="offer-card">
+        <span class="badge">-40%</span>
+        <span class="wishlist">🤍</span>
+        <span class="stock" data-stock="5">Only 5 left</span>
+        <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?q=80&w=800&auto=format&fit=crop">
+        <h3>Fresh Apples</h3>
+        <p class="old-price">₹120</p>
+        <p class="new-price">₹72</p>
+        <button class="deal-btn">Grab Deal</button>
+        <div class="stock-bar">
+            <div class="stock-fill"></div>
+        </div>
+    </div>
+
+    <div class="offer-card">
+        <span class="badge">-30%</span>
+        <span class="wishlist">🤍</span>
+        <span class="stock" data-stock="3">Only 3 left</span>
+        <img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?q=80&w=800&auto=format&fit=crop">
+        <h3>Milk Pack</h3>
+        <p class="old-price">₹55</p>
+        <p class="new-price">₹38</p>
+        <button class="deal-btn">Grab Deal</button>
+        <div class="stock-bar">
+            <div class="stock-fill"></div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const buttons = document.querySelectorAll(".deal-btn");
+        const wishlistBtns = document.querySelectorAll(".wishlist");
+
+        // Wishlist toggle
+        wishlistBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                btn.classList.toggle("active");
+                btn.textContent = btn.classList.contains("active") ? "❤️" : "🤍";
+            });
+        });
+
+        // Deal button click
+        buttons.forEach(btn => {
+            btn.addEventListener("click", function () {
+
+                const card = btn.closest(".offer-card");
+                const stockEl = card.querySelector(".stock");
+                const stockFill = card.querySelector(".stock-fill");
+
+                let stock = parseInt(stockEl.dataset.stock);
+                let maxStock = 5; // default max
+
+                if (stock > 0) {
+                    stock--;
+                    stockEl.dataset.stock = stock;
+                    stockEl.textContent = "Only " + stock + " left";
+
+                    // update progress bar
+                    let percent = (stock / maxStock) * 100;
+                    stockFill.style.width = percent + "%";
+
+                    if (stock === 0) {
+                        btn.textContent = "Sold Out";
+                        btn.disabled = true;
+                        btn.style.opacity = "0.5";
+                    }
+                }
+
+            });
+        });
+
+    });
+</script>
+
+{% endblock %}
