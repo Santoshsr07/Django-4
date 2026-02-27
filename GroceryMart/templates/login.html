@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="auth-split">
+
+    <!-- LEFT SIDE -->
+    <div class="auth-left">
+        <h1>GroceryMart</h1>
+        <p>Groceries. But make it aesthetic.</p>
+        <div class="auth-glow"></div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="auth-right">
+        <div class="auth-box">
+
+            <h2>Welcome Back 👋</h2>
+            <p class="auth-sub">Let’s continue the chaos.</p>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="input-group">
+                    {{ form.username }}
+                </div>
+
+                <div class="input-group">
+                    {{ form.password }}
+                </div>
+
+                {% if form.errors %}
+                    <div class="form-error">
+                        Invalid credentials.
+                    </div>
+                {% endif %}
+
+                <button type="submit" class="auth-btn">
+                    Login
+                </button>
+            </form>
+
+            <div class="auth-switch">
+                Don’t have account?
+                <a href="{% url 'signup' %}">Sign Up</a>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

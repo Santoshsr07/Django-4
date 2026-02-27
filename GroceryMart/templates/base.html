@@ -20,16 +20,28 @@
 
     <!-- 🔥 Navbar -->
     <nav class="navbar">
-        <div class="logo">🛒 GroceryMart</div>
+        <div class="logo" id="site-logo">
+            🛒 GroceryMart
+        </div>
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
             <li><a href="{% url 'shop' %}">Shop</a></li>
             <li><a href="{% url 'categories' %}">Categories</a></li>
-            <a href="{% url 'offers' %}">Offers</a>
+            <li><a href="{% url 'offers' %}">Offers</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
         <div class="nav-btn">
-            <a href="#" class="login-btn">Login</a>
+
+            {% if user.is_authenticated %}
+            <a href="{% url 'cart' %}" class="login-btn">🛒 Cart</a>
+            <form method="post" action="{% url 'logout' %}" class="dev-logout-form">
+                {% csrf_token %}
+                <button type="submit" class="dev-logout">Logout</button>
+            </form>
+            {% else %}
+            <a href="{% url 'login' %}" class="login-btn">Login</a>
+            {% endif %}
+
         </div>
     </nav>
 
@@ -171,6 +183,65 @@
             }
 
         });
+
+        /* ===== Smart Logo Click Logic ===== */
+
+        const logo = document.getElementById("site-logo");
+        const devLogout = document.querySelector(".dev-logout");
+
+        if (logo) {
+
+            let clickTimeout = null;
+
+            logo.addEventListener("click", function () {
+
+                if (clickTimeout) {
+                    // Double click detected
+                    clearTimeout(clickTimeout);
+                    clickTimeout = null;
+
+                    if (devLogout) {
+                        document.querySelector(".dev-logout-form")?.classList.toggle("show");
+                    }
+
+                } else {
+                    // Single click — wait to see if second click comes
+                    clickTimeout = setTimeout(function () {
+                        window.location.href = "/";
+                        clickTimeout = null;
+                    }, 250); // 250ms delay
+                }
+                const logo = document.getElementById("site-logo");
+                const devLogoutForm = document.querySelector(".dev-logout-form");
+
+                if (logo) {
+
+                    let clickTimeout = null;
+
+                    logo.addEventListener("click", function () {
+
+                        if (clickTimeout) {
+                            clearTimeout(clickTimeout);
+                            clickTimeout = null;
+
+                            if (devLogoutForm) {
+                                devLogoutForm.classList.toggle("show");
+                            }
+
+                        } else {
+                            clickTimeout = setTimeout(function () {
+                                window.location.href = "/";
+                                clickTimeout = null;
+                            }, 250);
+                        }
+
+                    });
+                }
+
+            });
+        }
+
+
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

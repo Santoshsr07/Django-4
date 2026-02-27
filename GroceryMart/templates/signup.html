@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="auth-split">
+
+    <!-- LEFT SIDE -->
+    <div class="auth-left">
+        <h1>Join GroceryMart</h1>
+        <p>Fresh vibes. Smart groceries.</p>
+        <div class="auth-glow"></div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="auth-right">
+        <div class="auth-box">
+
+            <h2>Create Account 🚀</h2>
+            <p class="auth-sub">Start your grocery journey.</p>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="input-group">
+                    <label>Username</label>
+                    {{ form.username }}
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    {{ form.password1 }}
+                </div>
+
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    {{ form.password2 }}
+                </div>
+
+                {% if form.errors %}
+                    <div class="form-error">
+                        Please fix the errors above.
+                    </div>
+                {% endif %}
+
+                <button type="submit" class="auth-btn">
+                    Sign Up
+                </button>
+            </form>
+
+            <div class="auth-switch">
+                Already have account?
+                <a href="{% url 'login' %}">Login</a>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
