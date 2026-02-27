@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block title %}Dairy | GroceryMart{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="dairy-hero-v2">
+    <div class="container dairy-hero-grid">
+
+        <div class="dairy-text">
+            <h1>
+                Dairy Hits Different 🥛
+            </h1>
+            <p>
+                Farm-fresh milk, cheese & butter.
+                Clean protein. Zero drama. Delivered fast.
+            </p>
+
+            <div class="dairy-buttons">
+                <a href="{% url 'shop' %}" class="primary-btn">Shop Dairy</a>
+                <a href="{% url 'offers' %}" class="secondary-btn">See Deals</a>
+            </div>
+        </div>
+
+        <div class="dairy-image">
+            <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?q=80&w=900&auto=format&fit=crop" alt="Dairy">
+        </div>
+
+    </div>
+</section>
+
+
+<!-- PRODUCT HIGHLIGHT STRIP -->
+<section class="dairy-strip">
+    <div class="container strip-grid">
+        <div>🥛 High Protein</div>
+        <div>❄️ Cold Stored</div>
+        <div>🚀 10-Min Delivery</div>
+        <div>💎 Premium Quality</div>
+    </div>
+</section>
+
+
+<!-- FEATURE CARDS -->
+<section class="dairy-features">
+    <div class="container">
+        <h2>Why Our Dairy Slaps</h2>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+                <span>🌱</span>
+                <h3>Farm Fresh</h3>
+                <p>Sourced daily from trusted farms.</p>
+            </div>
+
+            <div class="feature-card">
+                <span>🧠</span>
+                <h3>Brain Fuel</h3>
+                <p>Rich nutrients for active minds.</p>
+            </div>
+
+            <div class="feature-card">
+                <span>💪</span>
+                <h3>Muscle Power</h3>
+                <p>High protein. Real gains.</p>
+            </div>
+
+            <div class="feature-card">
+                <span>❤️</span>
+                <h3>Heart Care</h3>
+                <p>Balanced nutrition, everyday health.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- POPULAR PRODUCTS -->
+<section class="dairy-products-v2">
+    <div class="container">
+        <h2>Top Picks</h2>
+
+        <div class="product-grid">
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=800&auto=format&fit=crop">
+                <h3>Fresh Milk</h3>
+                <p class="price">₹60</p>
+                <button class="cart-btn">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1585238342024-78d387f4a707?q=80&w=800&auto=format&fit=crop">
+                <h3>Butter Block</h3>
+                <p class="price">₹120</p>
+                <button class="cart-btn">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1604908177225-4c9f1b19b89c?q=80&w=800&auto=format&fit=crop">
+                <h3>Cheddar Cheese</h3>
+                <p class="price">₹200</p>
+                <button class="cart-btn">Add to Cart</button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- CTA -->
+<section class="dairy-cta-v2">
+    <div class="container">
+        <div class="cta-box">
+            <h2>Stock Your Fridge.</h2>
+            <p>Fresh dairy delivered before your cravings hit.</p>
+            <a href="{% url 'shop' %}" class="primary-btn">Explore More</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

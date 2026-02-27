@@ -39,10 +39,13 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
 
-            /* ===== Scroll Reveal ===== */
-            const revealCards = document.querySelectorAll('.card');
+            /* ===== SAFE QUERY HELPER ===== */
+            const $ = (selector) => document.querySelector(selector);
+            const $$ = (selector) => document.querySelectorAll(selector);
 
-            if (revealCards.length > 0) {
+            /* ===== Scroll Reveal ===== */
+            const revealCards = $$(".card");
+            if (revealCards.length) {
                 const observer = new IntersectionObserver(entries => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -50,13 +53,11 @@
                         }
                     });
                 });
-
                 revealCards.forEach(card => observer.observe(card));
             }
 
             /* ===== Mouse Glow ===== */
-            const glow = document.querySelector('.cursor-glow');
-
+            const glow = $(".cursor-glow");
             if (glow) {
                 document.addEventListener('mousemove', e => {
                     glow.style.left = e.pageX + 'px';
@@ -64,106 +65,115 @@
                 });
             }
 
-            /* ===== 3D Tilt Cards ===== */
-            const tiltCards = document.querySelectorAll('.card');
+            /* ===== Cart Logic ===== */
+            const cartDisplay = $("#cart-count");
+            const buttons = $$(".cart-btn");
+            const toast = $("#toast");
 
-            tiltCards.forEach(card => {
-                card.addEventListener('mousemove', e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
+            if (cartDisplay && buttons.length) {
+                let cartCount = 0;
 
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
+                buttons.forEach(btn => {
+                    btn.addEventListener("click", () => {
+                        cartCount++;
+                        cartDisplay.textContent = cartCount;
 
-                    const rotateX = -(y - centerY) / 15;
-                    const rotateY = (x - centerX) / 15;
-
-                    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = "rotateX(0) rotateY(0)";
-                });
-            });
-
-        });
-        document.addEventListener("DOMContentLoaded", function () {
-
-            let cartCount = 0;
-            const cartDisplay = document.getElementById("cart-count");
-            const buttons = document.querySelectorAll(".cart-btn");
-            const toast = document.getElementById("toast");
-
-            buttons.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    cartCount++;
-                    cartDisplay.textContent = cartCount;
-
-                    toast.classList.add("show");
-                    setTimeout(() => toast.classList.remove("show"), 1500);
-                });
-            });
-
-            /* FILTER */
-            const filterBtns = document.querySelectorAll(".filter-btn");
-            const products = document.querySelectorAll(".product-card");
-
-            filterBtns.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    document.querySelector(".active").classList.remove("active");
-                    btn.classList.add("active");
-
-                    const filter = btn.dataset.filter;
-
-                    products.forEach(product => {
-                        if (filter === "all" || product.dataset.category === filter) {
-                            product.style.display = "block";
-                        } else {
-                            product.style.display = "none";
+                        if (toast) {
+                            toast.classList.add("show");
+                            setTimeout(() => toast.classList.remove("show"), 1500);
                         }
                     });
                 });
-            });
+            }
 
-            /* SEARCH */
-            const searchInput = document.getElementById("searchInput");
+            /* ===== Filter ===== */
+            const filterBtns = $$(".filter-btn");
+            const products = $$(".product-card");
 
-            searchInput.addEventListener("keyup", () => {
-                const value = searchInput.value.toLowerCase();
+            if (filterBtns.length && products.length) {
+                filterBtns.forEach(btn => {
+                    btn.addEventListener("click", () => {
 
-                products.forEach(product => {
-                    const name = product.querySelector("h3").textContent.toLowerCase();
-                    product.style.display = name.includes(value) ? "block" : "none";
+                        const activeBtn = $(".filter-btn.active");
+                        if (activeBtn) activeBtn.classList.remove("active");
+
+                        btn.classList.add("active");
+
+                        const filter = btn.dataset.filter;
+
+                        products.forEach(product => {
+                            product.style.display =
+                                filter === "all" || product.dataset.category === filter
+                                    ? "block"
+                                    : "none";
+                        });
+                    });
                 });
-            });
+            }
+
+            /* ===== Search ===== */
+            const searchInput = $("#searchInput");
+
+            if (searchInput && products.length) {
+                searchInput.addEventListener("keyup", () => {
+                    const value = searchInput.value.toLowerCase();
+
+                    products.forEach(product => {
+                        const name = product.querySelector("h3")?.textContent.toLowerCase();
+                        product.style.display =
+                            name && name.includes(value) ? "block" : "none";
+                    });
+                });
+            }
+
+            /* ===== Countdown ===== */
+            const countdownEl = $("#countdown");
+
+            if (countdownEl) {
+                let time = 3600;
+
+                setInterval(() => {
+                    let hours = Math.floor(time / 3600);
+                    let minutes = Math.floor((time % 3600) / 60);
+                    let seconds = time % 60;
+
+                    countdownEl.textContent =
+                        String(hours).padStart(2, '0') + " : " +
+                        String(minutes).padStart(2, '0') + " : " +
+                        String(seconds).padStart(2, '0');
+
+                    if (time > 0) time--;
+                }, 1000);
+            }
+
+            /* ===== Counter Animation ===== */
+            const counters = $$(".count");
+
+            if (counters.length) {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute("data-target");
+                    let count = 0;
+
+                    const update = () => {
+                        const increment = target / 100;
+                        count += increment;
+
+                        if (count < target) {
+                            counter.innerText = Math.floor(count);
+                            requestAnimationFrame(update);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+
+                    update();
+                });
+            }
 
         });
-
-        document.addEventListener("DOMContentLoaded", function () {
-
-            let time = 3600; // 1 hour in seconds
-
-            const countdownEl = document.getElementById("countdown");
-
-            setInterval(() => {
-                let hours = Math.floor(time / 3600);
-                let minutes = Math.floor((time % 3600) / 60);
-                let seconds = time % 60;
-
-                countdownEl.textContent =
-                    String(hours).padStart(2, '0') + " : " +
-                    String(minutes).padStart(2, '0') + " : " +
-                    String(seconds).padStart(2, '0');
-
-                if (time > 0) time--;
-
-            }, 1000);
-
-        });
-
-
     </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 </body>
 

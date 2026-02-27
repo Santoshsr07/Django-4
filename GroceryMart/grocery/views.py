@@ -11,8 +11,8 @@ def shop(request):
 def offers(request):
     return render(request, 'offers.html')
 
-def milk(request):
-    return render(request, 'milk.html')
+def dairy(request):
+    return render(request, 'dairy.html')
 
 def dryfruit(request):
     return render(request, 'dryfruits.html')

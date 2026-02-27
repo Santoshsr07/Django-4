@@ -13,13 +13,56 @@ body {
 
 }
 
+/* ===== GLOBAL RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+}
+
+body {
+    background: #0d0d1a;
+    color: white;
+    overflow-x: hidden;
+    padding-top: 90px;
+    /* prevents navbar overlap */
+}
+
+/* ===== GLOBAL SECTION WRAPPER ===== */
+section {
+    width: 100%;
+}
+
+/* Universal centered container */
+.container,
+.dairy-container,
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* GLOBAL CONTAINER FIX */
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
 /* ===== NAVBAR ===== */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 18px 80px;
+    height: 90px;
+    padding: 0 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,7 +71,6 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     z-index: 1000;
 }
-
 /* Remove bullets + horizontal layout */
 .nav-links {
     list-style: none;
@@ -516,6 +558,7 @@ body {
     background: linear-gradient(90deg, #ff0000, #ff9900);
     transition: width 0.3s ease;
 }
+
 .wishlist {
     position: absolute;
     top: 55px;
@@ -583,12 +626,12 @@ body {
 }
 
 .secondary-btn {
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     color: white;
 }
 
 .secondary-btn:hover {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* ================= FEATURE STRIP ================= */
@@ -598,7 +641,7 @@ body {
     justify-content: center;
     gap: 40px;
     padding: 30px;
-    background: rgba(255,255,255,0.04);
+    background: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(10px);
     flex-wrap: wrap;
 }
@@ -607,6 +650,7 @@ body {
     font-size: 16px;
     opacity: 0.8;
 }
+
 /* ================= HOME CATEGORY FIX ================= */
 
 .home-categories {
@@ -635,10 +679,10 @@ body {
     border-radius: 22px;
     overflow: hidden;
     display: block;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
     transition: 0.35s ease;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .home-card img {
@@ -650,8 +694,9 @@ body {
 
 .home-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 0 40px rgba(255,0,200,0.25);
+    box-shadow: 0 0 40px rgba(255, 0, 200, 0.25);
 }
+
 .home-card img {
     filter: brightness(0.8);
 }
@@ -667,14 +712,118 @@ body {
     bottom: 0;
     width: 100%;
     padding: 25px;
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.9) 0%,
-        rgba(0, 0, 0, 0.6) 50%,
-        transparent 100%
-    );
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.6) 50%,
+            transparent 100%);
     font-size: 20px;
     font-weight: 700;
     color: white;
     letter-spacing: 0.5px;
 }
+/* ===== DAIRY V2 ===== */
+
+.dairy-hero-v2 {
+    padding: 120px 0;
+}
+
+.dairy-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.dairy-text h1 {
+    font-size: 56px;
+    margin-bottom: 20px;
+}
+
+.dairy-text p {
+    opacity: 0.75;
+    margin-bottom: 30px;
+}
+
+.dairy-image {
+    display: flex;
+    justify-content: center;
+}
+
+.dairy-image img {
+    width: 100%;
+    max-width: 350px;   /* controls size */
+    height: auto;
+    border-radius: 25px;
+    box-shadow: 0 0 40px rgba(255,0,200,0.2);
+}
+.dairy-image img {
+    animation: floatMilk 4s ease-in-out infinite;
+}
+
+@keyframes floatMilk {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.dairy-strip {
+    background: rgba(255,255,255,0.04);
+    padding: 30px 0;
+    backdrop-filter: blur(10px);
+}
+
+.strip-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    font-weight: 500;
+    flex-wrap: wrap;
+}
+
+.dairy-features {
+    padding: 120px 0;
+    text-align: center;
+}
+
+.feature-grid {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.feature-card {
+    background: rgba(255,255,255,0.05);
+    padding: 40px;
+    border-radius: 25px;
+    transition: 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 30px rgba(0,255,200,0.3);
+}
+
+.feature-card span {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.dairy-products-v2 {
+    padding: 120px 0;
+    text-align: center;
+}
+
+.dairy-cta-v2 {
+    padding: 140px 0;
+}
+
+.cta-box {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    padding: 60px;
+    border-radius: 30px;
+    text-align: center;
+}
+
+
