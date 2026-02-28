@@ -289,36 +289,36 @@
                 updateCartUI();
                 renderCart();
             });
+            /* ===== Smart Logo Click Logic ===== */
+
+            const logo = document.getElementById("site-logo");
+            const devLogoutForm = document.querySelector(".dev-logout-form");
+
+            if (logo) {
+
+                let clickTimeout = null;
+
+                logo.addEventListener("click", function () {
+
+                    if (clickTimeout) {
+                        clearTimeout(clickTimeout);
+                        clickTimeout = null;
+
+                        devLogoutForm?.classList.toggle("show");
+
+                    } else {
+                        clickTimeout = setTimeout(function () {
+                            window.location.href = "/";
+                            clickTimeout = null;
+                        }, 250);
+                    }
+
+                });
+            }
 
 
         });
 
-        /* ===== Smart Logo Click Logic ===== */
-
-        const logo = document.getElementById("site-logo");
-        const devLogoutForm = document.querySelector(".dev-logout-form");
-
-        if (logo) {
-
-            let clickTimeout = null;
-
-            logo.addEventListener("click", function () {
-
-                if (clickTimeout) {
-                    clearTimeout(clickTimeout);
-                    clickTimeout = null;
-
-                    devLogoutForm?.classList.toggle("show");
-
-                } else {
-                    clickTimeout = setTimeout(function () {
-                        window.location.href = "/";
-                        clickTimeout = null;
-                    }, 250);
-                }
-
-            });
-        }
 
 
     </script>
