@@ -352,12 +352,14 @@
                 Total: ₹<span id="cart-total">0</span>
             </div>
 
-            <button class="primary-btn" id="checkout-btn">
-                Checkout
+            <!-- Secondary action -->
+            <button id="clear-cart" class="clear-btn">
+                Clear Cart
             </button>
 
-            <button id="clear-cart">
-                Clear Cart
+            <!-- Primary action -->
+            <button class="checkout-btn" id="checkout-btn">
+                Checkout
             </button>
 
             {% if user.is_authenticated %}
