@@ -10,6 +10,7 @@ urlpatterns = [
     path("dairy/", views.dairy, name="dairy"),
     path("dryfruits/", views.dryfruits, name="dryfruits"),
     path("beverages/", views.beverages, name="beverages"),
+    path("toys/", views.toys, name="toys"),
     # AUTH
     path("login/", views.login_view, name="login"),
     path("signup/", views.signup_view, name="signup"),

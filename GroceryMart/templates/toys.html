@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block title %}Toys Collection | GroceryMart{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="toys-hero">
+    <div class="container toys-hero-grid">
+
+        <div class="toys-left">
+            <h1>
+                Play. Smile.
+                <span>Repeat.</span>
+            </h1>
+
+            <p>
+                Discover trending toys, games and collectibles
+                that spark joy at every age.
+            </p>
+
+            <div class="toys-buttons">
+                <a href="#products" class="primary-btn">Explore Toys</a>
+                <a href="{% url 'offers' %}" class="secondary-btn">Hot Deals</a>
+            </div>
+        </div>
+
+        <div class="toys-right">
+            <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=900&auto=format&fit=crop" alt="Toys">
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ===== CATEGORY STRIP ===== -->
+<section class="toys-strip">
+    <div class="container strip-grid">
+        <div>🎮 Gaming</div>
+        <div>🧸 Soft Toys</div>
+        <div>🚗 Remote Cars</div>
+        <div>🧩 Puzzles</div>
+    </div>
+</section>
+
+
+<!-- ===== PRODUCTS ===== -->
+<section class="toys-products" id="products">
+    <div class="container">
+        <h2>Trending Now</h2>
+
+        <div class="toys-grid">
+
+            <div class="toys-card">
+                <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?q=80&w=800&auto=format&fit=crop">
+                <div class="toys-overlay">
+                    <h3>Remote Control Car</h3>
+                    <p class="price">₹1,499</p>
+                    <div class="toy-tag">Fast • Rechargeable</div>
+                    <button class="cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="toys-card">
+                <img src="https://images.unsplash.com/photo-1580477667995-2b94f01c9516?q=80&w=800&auto=format&fit=crop">
+                <div class="toys-overlay">
+                    <h3>Teddy Bear</h3>
+                    <p class="price">₹899</p>
+                    <div class="toy-tag">Soft • Premium Fabric</div>
+                    <button class="cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="toys-card">
+                <img src="https://images.unsplash.com/photo-1585079542156-2755d9c8aff0?q=80&w=800&auto=format&fit=crop">
+                <div class="toys-overlay">
+                    <h3>Gaming Controller</h3>
+                    <p class="price">₹2,199</p>
+                    <div class="toy-tag">Wireless • High Precision</div>
+                    <button class="cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="toys-card">
+                <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=800&auto=format&fit=crop">
+                <div class="toys-overlay">
+                    <h3>Creative Puzzle Set</h3>
+                    <p class="price">₹699</p>
+                    <div class="toy-tag">Brain Boost • Fun</div>
+                    <button class="cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== FUN STATS ===== -->
+<section class="toys-stats">
+    <div class="container stats-grid">
+
+        <div class="stat">
+            <h2 class="count" data-target="2500">0</h2>
+            <p>Happy Kids</p>
+        </div>
+
+        <div class="stat">
+            <h2 class="count" data-target="75">0</h2>
+            <p>Toy Categories</p>
+        </div>
+
+        <div class="stat">
+            <h2 class="count" data-target="4">0</h2>
+            <p>⭐ Average Rating</p>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

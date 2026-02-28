@@ -1456,3 +1456,144 @@ section {
         margin: 0 auto;
     }
 }
+
+/* ================= TOYS PAGE ================= */
+
+.toys-hero {
+    padding: 140px 80px;
+}
+
+.toys-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.toys-left h1 {
+    font-size: 60px;
+    line-height: 1.1;
+}
+
+.toys-left h1 span {
+    background: linear-gradient(90deg, #ff9900, #ff00cc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.toys-left p {
+    margin-top: 20px;
+    opacity: 0.7;
+    max-width: 450px;
+}
+
+.toys-buttons {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+}
+
+.toys-right img {
+    width: 100%;
+    max-width: 360px;
+    border-radius: 25px;
+    box-shadow: 0 0 40px rgba(255, 0, 200, 0.2);
+    transition: 0.4s ease;
+}
+
+.toys-right img:hover {
+    transform: scale(1.05);
+}
+
+/* Strip */
+
+.toys-strip {
+    padding: 30px 0;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* Products */
+
+.toys-products {
+    padding: 120px 80px;
+    text-align: center;
+}
+
+.toys-products h2 {
+    font-size: 42px;
+    margin-bottom: 60px;
+}
+
+.toys-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 40px;
+}
+
+.toys-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.toys-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    transition: 0.4s ease;
+}
+
+.toys-card:hover img {
+    transform: scale(1.1);
+}
+
+.toys-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 25px;
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.9),
+            rgba(0, 0, 0, 0.4),
+            transparent);
+    text-align: left;
+}
+
+.toy-tag {
+    font-size: 13px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.toys-card:hover .toy-tag {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stats */
+
+.toys-stats {
+    padding: 120px 80px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    .toys-hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .toys-buttons {
+        justify-content: center;
+    }
+
+    .toys-right img {
+        margin: 0 auto;
+    }
+}
