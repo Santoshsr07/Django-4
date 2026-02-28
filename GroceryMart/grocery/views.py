@@ -75,8 +75,8 @@ def toys(request):
     return render(request, "toys.html")
 
 
-def bevrages(request):
-    return render(request, "bevrages.html")
+def beverages(request):
+    return render(request, "beverages.html")
 
 
 def categories(request):

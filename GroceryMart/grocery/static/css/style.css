@@ -1129,6 +1129,7 @@ section {
 .dev-logout:hover {
     opacity: 1;
 }
+
 /* ================= DRY FRUITS FINAL ================= */
 
 .dry-hero {
@@ -1148,7 +1149,7 @@ section {
 }
 
 .dry-left h1 span {
-    background: linear-gradient(90deg,#ff00cc,#00ffcc);
+    background: linear-gradient(90deg, #ff00cc, #00ffcc);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -1169,7 +1170,7 @@ section {
     width: 100%;
     max-width: 450px;
     border-radius: 30px;
-    box-shadow: 0 0 50px rgba(255,0,200,0.15);
+    box-shadow: 0 0 50px rgba(255, 0, 200, 0.15);
     transition: 0.4s ease;
 }
 
@@ -1182,15 +1183,23 @@ section {
 .limited-offer {
     text-align: center;
     padding: 15px;
-    background: linear-gradient(90deg,#ff0000,#ff9900);
+    background: linear-gradient(90deg, #ff0000, #ff9900);
     font-weight: 600;
     animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
-    0% { opacity: .8; }
-    50% { opacity: 1; }
-    100% { opacity: .8; }
+    0% {
+        opacity: .8;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: .8;
+    }
 }
 
 /* Products */
@@ -1236,9 +1245,9 @@ section {
     width: 100%;
     padding: 25px;
     background: linear-gradient(to top,
-        rgba(0,0,0,0.9),
-        rgba(0,0,0,0.4),
-        transparent);
+            rgba(0, 0, 0, 0.9),
+            rgba(0, 0, 0, 0.4),
+            transparent);
     text-align: left;
 }
 
@@ -1260,7 +1269,7 @@ section {
 .dry-stats {
     padding: 120px 80px;
     text-align: center;
-    background: rgba(255,255,255,0.03);
+    background: rgba(255, 255, 255, 0.03);
 }
 
 .stats-grid {
@@ -1272,7 +1281,7 @@ section {
 
 .stat h2 {
     font-size: 48px;
-    background: linear-gradient(90deg,#ff00cc,#00ffcc);
+    background: linear-gradient(90deg, #ff00cc, #00ffcc);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -1290,6 +1299,160 @@ section {
     }
 
     .dry-right img {
+        margin: 0 auto;
+    }
+}
+
+
+
+/* ================= BEVERAGES PAGE ================= */
+
+.bev-hero {
+    padding: 140px 80px;
+}
+
+.bev-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.bev-left h1 {
+    font-size: 58px;
+    line-height: 1.1;
+}
+
+.bev-left h1 span {
+    background: linear-gradient(90deg, #00ccff, #00ffcc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bev-left p {
+    margin-top: 20px;
+    opacity: 0.7;
+    max-width: 450px;
+}
+
+.bev-buttons {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+}
+
+.bev-right {
+    display: flex;
+    justify-content: center;
+}
+
+.bev-right img {
+    width: 100%;
+    max-width: 360px;
+    /* smaller */
+    border-radius: 24px;
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.15);
+    transition: 0.4s ease;
+}
+
+.bev-right img:hover {
+    transform: scale(1.03);
+    /* less aggressive zoom */
+}
+
+.bev-right img:hover {
+    transform: scale(1.05);
+}
+
+/* Strip */
+
+.bev-strip {
+    padding: 30px 0;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* Products */
+
+.bev-products {
+    padding: 120px 80px;
+    text-align: center;
+}
+
+.bev-products h2 {
+    font-size: 42px;
+    margin-bottom: 60px;
+}
+
+.bev-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 40px;
+}
+
+.bev-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.bev-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    transition: 0.4s ease;
+}
+
+.bev-card:hover img {
+    transform: scale(1.1);
+}
+
+.bev-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 25px;
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.9),
+            rgba(0, 0, 0, 0.4),
+            transparent);
+    text-align: left;
+}
+
+.bev-tag {
+    font-size: 13px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.bev-card:hover .bev-tag {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stats */
+
+.bev-stats {
+    padding: 120px 80px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    .bev-hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .bev-buttons {
+        justify-content: center;
+    }
+
+    .bev-right img {
         margin: 0 auto;
     }
 }

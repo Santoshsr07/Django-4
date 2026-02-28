@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block title %}Beverages | GroceryMart{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="bev-hero">
+    <div class="container bev-hero-grid">
+
+        <div class="bev-left">
+            <h1>
+                Stay Cool.
+                <span>Stay Hydrated.</span>
+            </h1>
+
+            <p>
+                From fresh juices to energy drinks —
+                hydration meets style.
+            </p>
+
+            <div class="bev-buttons">
+                <a href="#products" class="primary-btn">Explore Drinks</a>
+                <a href="{% url 'offers' %}" class="secondary-btn">Hot Deals</a>
+            </div>
+        </div>
+
+        <div class="bev-right">
+            <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=900&auto=format&fit=crop" alt="Beverages">
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ===== FEATURE STRIP ===== -->
+<section class="bev-strip">
+    <div class="container strip-grid">
+        <div>❄ Ice Cold</div>
+        <div>🍊 Fresh Juices</div>
+        <div>⚡ Energy Boost</div>
+        <div>🚚 Quick Delivery</div>
+    </div>
+</section>
+
+
+<!-- ===== PRODUCTS ===== -->
+<section class="bev-products" id="products">
+    <div class="container">
+        <h2>Top Refreshments</h2>
+
+        <div class="bev-grid">
+
+            <div class="bev-card">
+                <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?q=80&w=800&auto=format&fit=crop">
+                <div class="bev-overlay">
+                    <h3>Fresh Orange Juice</h3>
+                    <p class="price">₹120 / bottle</p>
+                    <div class="bev-tag">Vitamin C • No Sugar Added</div>
+                    <button class="cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="bev-card">
+                <img src="https://images.unsplash.com/photo-1546173159-315724a31696?q=80&w=800&auto=format&fit=crop">
+                <div class="bev-overlay">
+                    <h3>Cold Brew Coffee</h3>
+                    <p class="price">₹180 / cup</p>
+                    <div class="bev-tag">Strong • Smooth</div>
+                    <button class="cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="bev-card">
+                <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?q=80&w=800&auto=format&fit=crop">
+                <div class="bev-overlay">
+                    <h3>Energy Drink</h3>
+                    <p class="price">₹95 / can</p>
+                    <div class="bev-tag">High Caffeine • Instant Boost</div>
+                    <button class="cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="bev-card">
+                <img src="https://images.unsplash.com/photo-1523362628745-0c100150b504?q=80&w=800&auto=format&fit=crop">
+                <div class="bev-overlay">
+                    <h3>Fresh Lemon Soda</h3>
+                    <p class="price">₹60 / glass</p>
+                    <div class="bev-tag">Chilled • Sparkling</div>
+                    <button class="cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== STATS ===== -->
+<section class="bev-stats">
+    <div class="container stats-grid">
+
+        <div class="stat">
+            <h2 class="count" data-target="3000">0</h2>
+            <p>Daily Orders</p>
+        </div>
+
+        <div class="stat">
+            <h2 class="count" data-target="45">0</h2>
+            <p>Drink Varieties</p>
+        </div>
+
+        <div class="stat">
+            <h2 class="count" data-target="99">0</h2>
+            <p>% Fresh Guarantee</p>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
