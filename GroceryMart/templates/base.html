@@ -32,14 +32,17 @@
         </ul>
         <div class="nav-btn">
 
+            <a href="{% url 'cart' %}" class="login-btn">
+                🛒 Cart (<span id="nav-cart-count">0</span>)
+            </a>
+
             {% if user.is_authenticated %}
-            <a href="{% url 'cart' %}" class="login-btn">🛒 Cart</a>
             <form method="post" action="{% url 'logout' %}" class="dev-logout-form">
                 {% csrf_token %}
                 <button type="submit" class="dev-logout">Logout</button>
             </form>
             {% else %}
-            <a href="{% url 'login' %}" class="login-btn">Login</a>
+            <a href="{% url 'login' %}" class="secondary-btn">Login</a>
             {% endif %}
 
         </div>
@@ -76,28 +79,57 @@
                     glow.style.top = e.pageY + 'px';
                 });
             }
+            /* ===== GLOBAL CART + TOAST SYSTEM ===== */
 
-            /* ===== Cart Logic ===== */
-            const cartDisplay = $("#cart-count");
-            const buttons = $$(".cart-btn");
-            const toast = $("#toast");
+            const navCartCount = document.getElementById("nav-cart-count");
+            const cartButtons = document.querySelectorAll(".cart-btn");
+            const toast = document.getElementById("cart-toast");
+            const toastProductName = document.getElementById("toast-product-name");
 
-            if (cartDisplay && buttons.length) {
-                let cartCount = 0;
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-                buttons.forEach(btn => {
-                    btn.addEventListener("click", () => {
-                        cartCount++;
-                        cartDisplay.textContent = cartCount;
-
-                        if (toast) {
-                            toast.classList.add("show");
-                            setTimeout(() => toast.classList.remove("show"), 1500);
-                        }
-                    });
-                });
+            // Update navbar count
+            function updateCartUI() {
+                if (navCartCount) {
+                    navCartCount.textContent = cart.length;
+                }
             }
 
+            updateCartUI();
+
+            // Add to cart click
+            cartButtons.forEach(button => {
+
+                button.addEventListener("click", function () {
+
+                    const productCard = this.closest(".dry-card, .bev-card, .toys-card, .product-card");
+
+                    if (!productCard) return;
+
+                    const productName = productCard.querySelector("h3")?.innerText || "Item";
+                    const productPrice = productCard.querySelector(".price")?.innerText || "";
+
+                    cart.push({
+                        name: productName,
+                        price: productPrice
+                    });
+
+                    localStorage.setItem("cart", JSON.stringify(cart));
+
+                    updateCartUI();
+
+                    // Toast animation
+                    if (toast && toastProductName) {
+                        toastProductName.textContent = productName;
+                        toast.classList.add("show");
+
+                        setTimeout(() => {
+                            toast.classList.remove("show");
+                        }, 2000);
+                    }
+                });
+
+            });
             /* ===== Filter ===== */
             const filterBtns = $$(".filter-btn");
             const products = $$(".product-card");
@@ -179,6 +211,7 @@
                     };
 
                     update();
+
                 });
             }
 
@@ -186,7 +219,7 @@
 
         /* ===== Smart Logo Click Logic ===== */
 
-        const logo = document.getElementById("site-logo");
+        
         const devLogout = document.querySelector(".dev-logout");
 
         if (logo) {
@@ -245,6 +278,13 @@
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <div id="cart-toast" class="cart-toast">
+        <div class="toast-icon">🛒</div>
+        <div class="toast-text">
+            <strong>Added to cart</strong>
+            <span id="toast-product-name"></span>
+        </div>
+    </div>
 
 </body>
 
