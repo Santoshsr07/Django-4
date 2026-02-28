@@ -8,6 +8,7 @@ urlpatterns = [
     path('categories/', views.categories, name='categories'),
     path('offers/', views.offers, name='offers'),
     path('dairy/', views.dairy, name='dairy'),
+    path('dryfruits/', views.dryfruits, name='dryfruits'),
 
     # AUTH
     path('login/', views.login_view, name='login'),

@@ -1129,3 +1129,167 @@ section {
 .dev-logout:hover {
     opacity: 1;
 }
+/* ================= DRY FRUITS FINAL ================= */
+
+.dry-hero {
+    padding: 140px 80px;
+}
+
+.dry-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.dry-left h1 {
+    font-size: 60px;
+    line-height: 1.1;
+}
+
+.dry-left h1 span {
+    background: linear-gradient(90deg,#ff00cc,#00ffcc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dry-left p {
+    margin-top: 20px;
+    opacity: 0.7;
+    max-width: 450px;
+}
+
+.dry-buttons {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+}
+
+.dry-right img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 30px;
+    box-shadow: 0 0 50px rgba(255,0,200,0.15);
+    transition: 0.4s ease;
+}
+
+.dry-right img:hover {
+    transform: scale(1.05);
+}
+
+/* Flash strip */
+
+.limited-offer {
+    text-align: center;
+    padding: 15px;
+    background: linear-gradient(90deg,#ff0000,#ff9900);
+    font-weight: 600;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: .8; }
+    50% { opacity: 1; }
+    100% { opacity: .8; }
+}
+
+/* Products */
+
+.dry-products {
+    padding: 120px 80px;
+    text-align: center;
+}
+
+.dry-products h2 {
+    font-size: 42px;
+    margin-bottom: 60px;
+}
+
+.dry-product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 40px;
+}
+
+.dry-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 25px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+}
+
+.dry-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    transition: 0.4s ease;
+}
+
+.dry-card:hover img {
+    transform: scale(1.1);
+}
+
+.dry-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 25px;
+    background: linear-gradient(to top,
+        rgba(0,0,0,0.9),
+        rgba(0,0,0,0.4),
+        transparent);
+    text-align: left;
+}
+
+.nutrition-tag {
+    font-size: 13px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.dry-card:hover .nutrition-tag {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stats */
+
+.dry-stats {
+    padding: 120px 80px;
+    text-align: center;
+    background: rgba(255,255,255,0.03);
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+}
+
+.stat h2 {
+    font-size: 48px;
+    background: linear-gradient(90deg,#ff00cc,#00ffcc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    .dry-hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .dry-buttons {
+        justify-content: center;
+    }
+
+    .dry-right img {
+        margin: 0 auto;
+    }
+}

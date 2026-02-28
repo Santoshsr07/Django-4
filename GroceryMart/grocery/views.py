@@ -8,27 +8,24 @@ from django.contrib.auth import login
 def signup_view(request):
     form = UserCreationForm(request.POST or None)
 
-    form.fields['username'].widget.attrs.update({
-        'placeholder': 'Choose a username',
-        'class': 'form-input'
-    })
+    form.fields["username"].widget.attrs.update(
+        {"placeholder": "Choose a username", "class": "form-input"}
+    )
 
-    form.fields['password1'].widget.attrs.update({
-        'placeholder': 'Create password',
-        'class': 'form-input'
-    })
+    form.fields["password1"].widget.attrs.update(
+        {"placeholder": "Create password", "class": "form-input"}
+    )
 
-    form.fields['password2'].widget.attrs.update({
-        'placeholder': 'Confirm password',
-        'class': 'form-input'
-    })
+    form.fields["password2"].widget.attrs.update(
+        {"placeholder": "Confirm password", "class": "form-input"}
+    )
 
     if form.is_valid():
         user = form.save()
         login(request, user)
-        return redirect('home')
+        return redirect("home")
 
-    return render(request, 'signup.html', {'form': form})
+    return render(request, "signup.html", {"form": form})
 
 
 def login_view(request):
@@ -70,7 +67,7 @@ def dairy(request):
     return render(request, "dairy.html")
 
 
-def dryfruit(request):
+def dryfruits(request):
     return render(request, "dryfruits.html")
 
 

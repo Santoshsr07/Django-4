@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block title %}Dry Fruits | GroceryMart{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="dry-hero">
+    <div class="container dry-hero-grid">
+
+        <div class="dry-left">
+            <h1>
+                Pure Energy.
+                <span>Zero Compromise.</span>
+            </h1>
+
+            <p>
+                Premium handpicked dry fruits for strength,
+                focus and unstoppable days.
+            </p>
+
+            <div class="dry-buttons">
+                <a href="#products" class="primary-btn">Shop Premium</a>
+                <a href="{% url 'offers' %}" class="secondary-btn">View Deals</a>
+            </div>
+        </div>
+
+        <div class="dry-right">
+            <img src="https://images.unsplash.com/photo-1590080875515-8b9c8f1c1a16?q=80&w=900&auto=format&fit=crop" alt="Dry Fruits">
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ===== FLASH STRIP ===== -->
+<div class="limited-offer">
+    🔥 Flash Sale — 20% Off on Almonds Today Only
+</div>
+
+
+<!-- ===== PRODUCTS ===== -->
+<section class="dry-products" id="products">
+    <div class="container">
+        <h2>Best Sellers</h2>
+
+        <div class="dry-product-grid">
+
+            <div class="dry-card">
+                <img src="https://images.unsplash.com/photo-1587731768195-1cfc1c2c8a91?q=80&w=800&auto=format&fit=crop">
+                <div class="dry-overlay">
+                    <h3>Premium Almonds</h3>
+                    <p class="price">₹750 / kg</p>
+                    <div class="nutrition-tag">Protein 21g • Fiber 12g</div>
+                    <button class="cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="dry-card">
+                <img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?q=80&w=800&auto=format&fit=crop">
+                <div class="dry-overlay">
+                    <h3>Roasted Cashews</h3>
+                    <p class="price">₹900 / kg</p>
+                    <div class="nutrition-tag">Healthy Fats • Magnesium</div>
+                    <button class="cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="dry-card">
+                <img src="https://images.unsplash.com/photo-1589927986089-35812388d1f4?q=80&w=800&auto=format&fit=crop">
+                <div class="dry-overlay">
+                    <h3>Golden Raisins</h3>
+                    <p class="price">₹600 / kg</p>
+                    <div class="nutrition-tag">Iron Rich • Natural Sugar</div>
+                    <button class="cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="dry-card">
+                <img src="https://images.unsplash.com/photo-1615485291234-7c1e7c5c93d0?q=80&w=800&auto=format&fit=crop">
+                <div class="dry-overlay">
+                    <h3>Iranian Pistachios</h3>
+                    <p class="price">₹1200 / kg</p>
+                    <div class="nutrition-tag">Protein Boost • Vitamin B6</div>
+                    <button class="cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== STATS ===== -->
+<section class="dry-stats">
+    <div class="container stats-grid">
+
+        <div class="stat">
+            <h2 class="count" data-target="5000">0</h2>
+            <p>Happy Customers</p>
+        </div>
+
+        <div class="stat">
+            <h2 class="count" data-target="120">0</h2>
+            <p>Premium Products</p>
+        </div>
+
+        <div class="stat">
+            <h2 class="count" data-target="98">0</h2>
+            <p>% Satisfaction</p>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
