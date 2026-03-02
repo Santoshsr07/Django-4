@@ -11,10 +11,12 @@ urlpatterns = [
     path("dryfruits/", views.dryfruits, name="dryfruits"),
     path("beverages/", views.beverages, name="beverages"),
     path("toys/", views.toys, name="toys"),
-    # AUTH
+    path("contact/", views.contact, name="contact"),
+    
     path("login/", views.login_view, name="login"),
     path("signup/", views.signup_view, name="signup"),
     path("logout/", auth_views.LogoutView.as_view(next_page="/"), name="logout"),
-    # CART
+    
+    
     path("cart/", views.cart, name="cart"),
 ]

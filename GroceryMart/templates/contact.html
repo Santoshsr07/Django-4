@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Contact | GroceryMart{% endblock %}
+
+{% block content %}
+
+<section class="contact-section">
+
+    <div class="contact-container">
+
+        <!-- LEFT SIDE INFO -->
+        <div class="contact-info">
+            <h1>Let’s Talk 💬</h1>
+            <p>Got questions, feedback, or partnership ideas?  
+               Drop a message. We respond faster than your cravings.</p>
+
+            <div class="contact-card">
+                <h3>📧 Email</h3>
+                <p>support@grocerymart.com</p>
+            </div>
+
+            <div class="contact-card">
+                <h3>📱 Phone</h3>
+                <p>+91 98765 43210</p>
+            </div>
+
+            <div class="contact-card">
+                <h3>📍 Location</h3>
+                <p>Vadodara, Gujarat, India</p>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE FORM -->
+        <div class="contact-form-box">
+
+            <h2>Send Message</h2>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+                <button type="submit" class="contact-btn">
+                    Send Message 🚀
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

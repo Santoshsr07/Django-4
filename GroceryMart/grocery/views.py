@@ -81,3 +81,6 @@ def beverages(request):
 
 def categories(request):
     return render(request, "categories.html")
+
+def contact(request):
+    return render(request, "contact.html")
